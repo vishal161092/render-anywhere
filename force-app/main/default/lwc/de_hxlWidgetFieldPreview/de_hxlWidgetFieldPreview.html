@@ -1,0 +1,197 @@
+<template>
+    <!-- Mirrors the configurable parts of uiWidgets/* (tile/* primitives). -->
+    <div class="widget">
+        <div class="row row_between row_wrap">
+            <div class="column">
+                <div class="row">
+                    <span class="text text_h2">{header.title}</span>
+                    <template lwc:if={header.badge}>
+                        <span class="badge">{header.badge}</span>
+                    </template>
+                </div>
+                <template lwc:if={header.subtitle}>
+                    <span class="text text_caption">{header.subtitle}</span>
+                </template>
+            </div>
+            <span class="link">Open in Salesforce</span>
+        </div>
+
+        <template lwc:if={hasSummary}>
+            <div class="row row_stretch">
+                <template for:each={summary} for:item="kpi">
+                    <div key={kpi.key} class="container container_emphasis container_stretch">
+                        <span class="text text_caption">{kpi.label}</span>
+                        <template lwc:if={kpi.isBadge}>
+                            <span class={kpi.badgeClass}>{kpi.valueDisplay}</span>
+                        </template>
+                        <template lwc:else>
+                            <span class="text text_h3">{kpi.valueDisplay}</span>
+                        </template>
+                        <template lwc:if={kpi.isGauge}>
+                            <div class="progress" title={kpi.label}>
+                                <div class={kpi.gaugeClass} style={kpi.gaugeStyle}></div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+            </div>
+        </template>
+
+        <template lwc:if={hasTiles}>
+            <div class="column column_sm">
+                <span class="text text_h4">{result.personTilesTitle}</span>
+                <div class="row row_wrap row_stretch">
+                    <template for:each={tiles} for:item="tile">
+                        <div key={tile.key} class="container container_emphasis">
+                            <span class="text text_caption">{tile.label}</span>
+                            <template lwc:if={tile.isBadge}>
+                                <span class={tile.badgeClass}>{tile.valueDisplay}</span>
+                            </template>
+                            <template lwc:else>
+                                <span class="text text_h3">{tile.valueDisplay}</span>
+                            </template>
+                            <template lwc:if={tile.isGauge}>
+                                <div class="progress" title={tile.label}>
+                                    <div class={tile.gaugeClass} style={tile.gaugeStyle}></div>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </template>
+
+        <template lwc:if={hasOpportunities}>
+            <div class="column column_sm">
+                <span class="text text_h4">Open opportunities</span>
+                <template for:each={opportunities} for:item="opp">
+                    <div key={opp.key} class="row row_between row_start">
+                        <div class="column">
+                            <span class="text text_strong">{opp.name}</span>
+                            <span class="text text_caption">{opp.stageName} · {opp.closeDisplay}</span>
+                            <template for:each={opp.lines} for:item="line">
+                                <span key={line.key} class="text text_caption">{line.text}</span>
+                            </template>
+                        </div>
+                        <span class="text text_strong">{opp.amountDisplay}</span>
+                    </div>
+                </template>
+            </div>
+        </template>
+
+        <template lwc:if={hasDetails}>
+            <hr class="separator" />
+            <div class="column column_sm">
+                <template for:each={details} for:item="detail">
+                    <div key={detail.key} class="column">
+                        <template lwc:if={detail.isGroupStart}>
+                            <span class="text text_h4 group">{detail.groupTitle}</span>
+                        </template>
+                        <template lwc:if={detail.isLong}>
+                            <!-- HXL renders rich text values as HTML and wraps long ones under the label. -->
+                            <div class="column">
+                                <span class="text text_caption">{detail.label}</span>
+                                <lightning-formatted-rich-text
+                                    class="text text_strong rich"
+                                    value={detail.valueDisplay}
+                                ></lightning-formatted-rich-text>
+                            </div>
+                        </template>
+                        <template lwc:else>
+                            <div class="row row_between">
+                                <span class="text text_caption">{detail.label}</span>
+                                <span class="text text_strong value">{detail.valueDisplay}</span>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+            </div>
+        </template>
+
+        <template for:each={lists} for:item="list">
+            <div key={list.key} class="column column_sm">
+                <hr class="separator" />
+                <div class="row row_between">
+                    <div class="row">
+                        <span class="icon" title={list.icon}>{list.icon}</span>
+                        <span class="text text_h4">{list.title}</span>
+                    </div>
+                    <span class="text text_caption">{list.summary}</span>
+                </div>
+                <template lwc:if={list.isEmpty}>
+                    <span class="text text_caption">{list.emptyText}</span>
+                </template>
+                <template lwc:if={list.isCard}>
+                    <template for:each={list.rows} for:item="row">
+                        <div key={row.key} class="container">
+                            <div class="row row_start row_md">
+                                <template lwc:if={row.hasImage}>
+                                    <img class="image" src={row.imageUrl} alt={row.title} />
+                                </template>
+                                <template lwc:elseif={row.hasIcon}>
+                                    <span class="row-icon" title={row.iconName}>{row.iconLetter}</span>
+                                </template>
+                                <div class="column">
+                                    <div class="row">
+                                        <span class="link">{row.title}</span>
+                                        <template lwc:if={row.hasBadge}>
+                                            <span class={row.badgeClass}>{row.badgeLabel}</span>
+                                        </template>
+                                    </div>
+                                    <template lwc:if={row.hasSubtitle}>
+                                        <span class="text text_caption">{row.subtitle}</span>
+                                    </template>
+                                    <div class="row row_wrap row_lg">
+                                        <template for:each={row.pairs} for:item="pair">
+                                            <div key={pair.key} class="column">
+                                                <span class="text text_caption">{pair.label}</span>
+                                                <lightning-formatted-rich-text
+                                                    class="text"
+                                                    value={pair.value}
+                                                ></lightning-formatted-rich-text>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </template>
+                <template lwc:if={list.isTable}>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <template for:each={list.columns} for:item="col">
+                                    <th key={col.key} scope="col">{col.header}</th>
+                                </template>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={list.tableRows} for:item="tr">
+                                <tr key={tr.key}>
+                                    <template for:each={tr.cells} for:item="cell">
+                                        <td key={cell.key}>{cell.value}</td>
+                                    </template>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </template>
+            </div>
+        </template>
+
+        <template lwc:if={showOwner}>
+            <!-- Account 360 footer, as in the widget. -->
+            <hr class="separator" />
+            <div class="row">
+                <span class="avatar">{result.ownerInitials}</span>
+                <span class="text text_caption">Account Owner</span>
+                <span class="text text_strong">{result.ownerName}</span>
+            </div>
+        </template>
+
+        <template lwc:if={isEmpty}>
+            <span class="text text_caption">No tiles, details, or lists to show for this record yet. Add a field on the left.</span>
+        </template>
+    </div>
+</template>

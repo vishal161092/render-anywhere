@@ -1,0 +1,40 @@
+{
+  "renderer": {
+    "componentOverrides": {
+      "$": {
+        "definition": "@widget/c/assetDetail",
+        "attributes": {
+          "assetName": "{!$attrs.assetName}",
+          "serialNumber": "{!$attrs.serialNumber}",
+          "status": "{!$attrs.status}",
+          "statusVariant": "{!$attrs.statusVariant}",
+          "productName": "{!$attrs.productName}",
+          "productCode": "{!$attrs.productCode}",
+          "quantityDisplay": "{!$attrs.quantityDisplay}",
+          "priceDisplay": "{!$attrs.priceDisplay}",
+          "assetLevelDisplay": "{!$attrs.assetLevelDisplay}",
+          "installDisplay": "{!$attrs.installDisplay}",
+          "purchaseDisplay": "{!$attrs.purchaseDisplay}",
+          "usageEndDisplay": "{!$attrs.usageEndDisplay}",
+          "hasLifecycle": "{!$attrs.hasLifecycle}",
+          "lifecycleTitle": "{!$attrs.lifecycleTitle}",
+          "lifecycleStatus": "{!$attrs.lifecycleStatus}",
+          "lifecycleStartDisplay": "{!$attrs.lifecycleStartDisplay}",
+          "lifecycleEndDisplay": "{!$attrs.lifecycleEndDisplay}",
+          "lifecycleVariant": "{!$attrs.lifecycleVariant}",
+          "lifecycleColor": "{!$attrs.lifecycleColor}",
+          "lifecyclePercent": "{!$attrs.lifecyclePercent}",
+          "description": "{!$attrs.description}",
+          "accountName": "{!$attrs.accountName}",
+          "accountUrl": "{!$attrs.accountUrl}",
+          "contactName": "{!$attrs.contactName}",
+          "contactInitials": "{!$attrs.contactInitials}",
+          "contactUrl": "{!$attrs.contactUrl}",
+          "salesforceUrl": "{!$attrs.salesforceUrl}",
+          "hasDetails": "{!$attrs.hasDetails}",
+          "details": "{!$attrs.details}"
+        }
+      }
+    }
+  }
+}

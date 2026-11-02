@@ -1,0 +1,5 @@
+{
+    "title": "Contact Quick View (Agentforce)",
+    "description": "Agentforce Output Rendering for the Contact Quick View widget. Typed at de_HXL_GetContactQuickView$Result so it binds flat ($attrs.<field>). MCP counterpart: contactQuickViewMcpResult.",
+    "lightning:type": "@apexClassType/c__de_HXL_GetContactQuickView$Result"
+}

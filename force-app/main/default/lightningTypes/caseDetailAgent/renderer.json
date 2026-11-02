@@ -1,0 +1,37 @@
+{
+  "renderer": {
+    "componentOverrides": {
+      "$": {
+        "definition": "@widget/c/caseDetail",
+        "attributes": {
+          "caseNumber": "{!$attrs.caseNumber}",
+          "subject": "{!$attrs.subject}",
+          "priority": "{!$attrs.priority}",
+          "priorityVariant": "{!$attrs.priorityVariant}",
+          "status": "{!$attrs.status}",
+          "statusVariant": "{!$attrs.statusVariant}",
+          "origin": "{!$attrs.origin}",
+          "createdDisplay": "{!$attrs.createdDisplay}",
+          "slaTitle": "{!$attrs.slaTitle}",
+          "slaStatus": "{!$attrs.slaStatus}",
+          "slaDueDisplay": "{!$attrs.slaDueDisplay}",
+          "slaPercent": "{!$attrs.slaPercent}",
+          "slaVariant": "{!$attrs.slaVariant}",
+          "slaColor": "{!$attrs.slaColor}",
+          "description": "{!$attrs.description}",
+          "accountName": "{!$attrs.accountName}",
+          "accountUrl": "{!$attrs.accountUrl}",
+          "contactName": "{!$attrs.contactName}",
+          "contactInitials": "{!$attrs.contactInitials}",
+          "contactUrl": "{!$attrs.contactUrl}",
+          "ownerName": "{!$attrs.ownerName}",
+          "ownerInitials": "{!$attrs.ownerInitials}",
+          "salesforceUrl": "{!$attrs.salesforceUrl}",
+          "kbArticles": "{!$attrs.kbArticles}",
+          "hasDetails": "{!$attrs.hasDetails}",
+          "details": "{!$attrs.details}"
+        }
+      }
+    }
+  }
+}

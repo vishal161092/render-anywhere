@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Returns an Asset detail view (product, serial number, status, price, quantity, install/purchase/usage dates, lifecycle timer, owning account and contact) rendered as the Asset Detail HXL widget. Accepts an Asset name, a serial number, OR a 15/18-char Asset Id in assetRef; it resolves names and serial numbers on its own, so pass whatever the user said and do not ask the user for an Id first.</description>
+    <developerName>HXL_Get_Asset_Detail</developerName>
+    <invocationTarget>de_HXL_GetAssetDetail</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+    <localDeveloperName>HXL_Get_Asset_Detail</localDeveloperName>
+    <masterLabel>HXL Get Asset Detail</masterLabel>
+</GenAiFunction>

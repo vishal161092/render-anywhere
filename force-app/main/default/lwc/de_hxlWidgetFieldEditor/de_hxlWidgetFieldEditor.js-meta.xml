@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>67.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>HXL Widget Field Settings</masterLabel>
+    <description>Edit the HXL Widget Field custom metadata behind the Account 360 Person Account view. Requires the HXL Widget Field Editor permission set.</description>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__Tab</target>
+    </targets>
+</LightningComponentBundle>

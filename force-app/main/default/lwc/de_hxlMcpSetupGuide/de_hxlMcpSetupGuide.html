@@ -1,0 +1,155 @@
+<template>
+    <lightning-card title="HXL Widgets Setup Guide" icon-name="custom:custom67">
+        <div class="slds-var-p-horizontal_medium slds-var-p-bottom_small">
+            <p class="slds-text-body_regular">
+                Add the HXL widgets to an agent in this org, or connect Slack,
+                ChatGPT, or Claude to this org's HXL MCP server
+                (<strong>HXLXDO</strong>). Sections are ordered easiest to
+                hardest.
+            </p>
+        </div>
+        <div
+            class="slds-var-p-horizontal_medium slds-var-p-bottom_medium section-divider"
+        >
+            <h3 class="slds-text-heading_small slds-var-m-bottom_x-small">
+                Example prompts
+            </h3>
+            <p
+                class="slds-text-body_small slds-text-color_weak slds-var-m-bottom_small"
+            >
+                Once an agent or client is set up, use these to trigger each of
+                the five HXL widgets.
+            </p>
+            <ul class="value-list">
+                <template for:each={examplePrompts} for:item="prompt">
+                    <li
+                        key={prompt.label}
+                        class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-var-p-around_small value-item"
+                    >
+                        <div class="value-item__text">
+                            <p class="value-item__label">{prompt.label}</p>
+                            <p class="value-item__value">{prompt.value}</p>
+                        </div>
+                        <lightning-button-icon
+                            icon-name="utility:copy"
+                            alternative-text={prompt.label}
+                            title="Copy"
+                            data-value={prompt.value}
+                            data-label={prompt.label}
+                            onclick={handleCopy}
+                        ></lightning-button-icon>
+                    </li>
+                </template>
+            </ul>
+        </div>
+        <lightning-accordion active-section-name={activeSectionName}>
+            <template for:each={sections} for:item="section">
+                <lightning-accordion-section
+                    key={section.name}
+                    name={section.name}
+                    label={section.label}
+                >
+                    <span slot="actions">
+                        <lightning-badge
+                            label={section.difficulty}
+                            class={section.badgeVariant}
+                        ></lightning-badge>
+                    </span>
+
+                    <p class="slds-text-body_regular slds-var-m-bottom_small">
+                        {section.summary}
+                    </p>
+
+                    <p
+                        class="slds-text-body_small slds-text-color_weak slds-var-m-bottom_small"
+                    >
+                        {section.caveat}
+                    </p>
+
+                    <template if:true={section.prerequisite}>
+                        <div
+                            class="slds-box slds-box_x-small slds-theme_warning slds-var-m-bottom_small"
+                        >
+                            {section.prerequisite.text}
+                            <a
+                                href={section.prerequisite.linkUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >{section.prerequisite.linkLabel}</a
+                            >
+                            {section.prerequisite.suffix}
+                        </div>
+                    </template>
+
+                    <h3
+                        class="slds-text-heading_small slds-var-m-bottom_x-small"
+                    >
+                        Copy-paste values
+                    </h3>
+                    <ul class="value-list slds-var-m-bottom_medium">
+                        <template for:each={section.values} for:item="item">
+                            <li
+                                key={item.label}
+                                class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-var-p-around_small value-item"
+                            >
+                                <div class="value-item__text">
+                                    <p class="value-item__label">
+                                        {item.label}
+                                    </p>
+                                    <p class="value-item__value">
+                                        {item.value}
+                                    </p>
+                                </div>
+                                <lightning-button-icon
+                                    icon-name="utility:copy"
+                                    alternative-text={item.label}
+                                    title="Copy"
+                                    data-value={item.value}
+                                    data-label={item.label}
+                                    onclick={handleCopy}
+                                ></lightning-button-icon>
+                            </li>
+                        </template>
+                    </ul>
+
+                    <h3
+                        class="slds-text-heading_small slds-var-m-bottom_x-small"
+                    >
+                        Steps
+                    </h3>
+                    <ol class="slds-list_ordered">
+                        <template for:each={section.steps} for:item="step">
+                            <li key={step.text} class="slds-var-m-bottom_small">
+                                {step.text}
+                                <template if:true={step.screenshot}>
+                                    <div class="slds-var-m-top_x-small">
+                                        <img
+                                            src={step.screenshot.src}
+                                            alt={step.screenshot.alt}
+                                            class="step-screenshot"
+                                        />
+                                    </div>
+                                </template>
+                            </li>
+                        </template>
+                    </ol>
+
+                    <template if:true={section.projectInstructions}>
+                        <div
+                            class="slds-box slds-box_x-small slds-theme_info slds-var-m-top_medium"
+                        >
+                            {section.projectInstructions.text}
+                            <a
+                                href={section.projectInstructions.linkUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >{section.projectInstructions.linkLabel}</a
+                            >
+                            {section.projectInstructions.suffix}
+                        </div>
+                    </template>
+                </lightning-accordion-section>
+            </template>
+        </lightning-accordion>
+    </lightning-card>
+</template>

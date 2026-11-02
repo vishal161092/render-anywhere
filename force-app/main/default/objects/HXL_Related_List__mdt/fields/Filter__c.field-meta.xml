@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Filter__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>All records, Open only (IsClosed = false; objects without IsClosed show all), or Field equals a value.</inlineHelpText>
+    <label>Filter</label>
+    <required>true</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>All</fullName>
+                <default>true</default>
+                <label>All</label>
+            </value>
+            <value>
+                <fullName>Open</fullName>
+                <default>false</default>
+                <label>Open</label>
+            </value>
+            <value>
+                <fullName>FieldEquals</fullName>
+                <default>false</default>
+                <label>FieldEquals</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,14 @@
+{
+  "title": "Account 360 MCP Output Values",
+  "description": "Payload fields from the de_HXL_GetAccount360 MCP tool response",
+  "type": "object",
+  "lightning:type": "lightning__objectType",
+  "unevaluatedProperties": false,
+  "lightning:tags": ["mcp"],
+  "properties": {
+    "snapshot": {
+      "title": "Account 360 Snapshot",
+      "lightning:type": "@apexClassType/c__de_HXL_GetAccount360$Result"
+    }
+  }
+}

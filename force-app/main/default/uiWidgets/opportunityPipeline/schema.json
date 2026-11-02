@@ -1,0 +1,121 @@
+{
+  "title": "Opportunity Pipeline Widget",
+  "description": "User pipeline overview: open pipeline, weighted forecast, quota attainment, and a table of open opportunities.",
+  "type": "object",
+  "properties": {
+    "attributes": {
+      "lightning:type": "lightning__objectType",
+      "properties": {
+        "userName": {
+          "title": "User Name",
+          "description": "User.Name",
+          "lightning:type": "lightning__textType"
+        },
+        "userInitials": {
+          "title": "User Initials",
+          "description": "Initials for avatar",
+          "lightning:type": "lightning__textType"
+        },
+        "userTitle": {
+          "title": "User Title",
+          "description": "User.Title",
+          "lightning:type": "lightning__textType"
+        },
+        "headerSubtitle": {
+          "title": "Header Subtitle",
+          "description": "Caption under the user's name",
+          "lightning:type": "lightning__textType"
+        },
+        "salesforceUrl": {
+          "title": "Salesforce URL",
+          "description": "Deep link to the User record",
+          "lightning:type": "lightning__urlType"
+        },
+        "openAmountDisplay": {
+          "title": "Open Pipeline (display)",
+          "description": "Formatted sum of open Opportunity amounts",
+          "lightning:type": "lightning__textType"
+        },
+        "weightedForecastDisplay": {
+          "title": "Weighted Forecast (display)",
+          "description": "Formatted probability-weighted open pipeline",
+          "lightning:type": "lightning__textType"
+        },
+        "quotaDisplay": {
+          "title": "Quota (display)",
+          "description": "Formatted quarterly quota (demo-derived)",
+          "lightning:type": "lightning__textType"
+        },
+        "quotaAttainmentDisplay": {
+          "title": "Quota Attainment (display)",
+          "description": "Percent-of-quota caption",
+          "lightning:type": "lightning__textType"
+        },
+        "quotaAttainmentPct": {
+          "title": "Quota Attainment %",
+          "description": "Closed-won this quarter as a percent of quota",
+          "lightning:type": "lightning__numberType"
+        },
+        "quotaAttainmentColor": {
+          "title": "Quota Attainment Color",
+          "description": "Semantic color token for the attainment progress bar",
+          "lightning:type": "lightning__textType"
+        },
+        "opportunities": {
+          "title": "Open Opportunities",
+          "description": "Top open opportunities, soonest-to-close first",
+          "type": "array",
+          "items": {
+            "lightning:type": "lightning__objectType",
+            "properties": {
+              "name": {
+                "title": "Opportunity",
+                "lightning:type": "lightning__textType"
+              },
+              "stageName": {
+                "title": "Stage",
+                "lightning:type": "lightning__textType"
+              },
+              "stageVariant": {
+                "title": "Stage Variant",
+                "lightning:type": "lightning__textType"
+              },
+              "amountDisplay": {
+                "title": "Amount",
+                "lightning:type": "lightning__textType"
+              },
+              "closeDisplay": {
+                "title": "Close Date",
+                "lightning:type": "lightning__textType"
+              },
+              "detail1Label": {
+                "title": "Detail 1 Label",
+                "lightning:type": "lightning__textType"
+              },
+              "detail1Value": {
+                "title": "Detail 1 Value",
+                "lightning:type": "lightning__textType"
+              },
+              "hasDetail1": {
+                "title": "Has Detail 1",
+                "lightning:type": "lightning__booleanType"
+              },
+              "detail2Label": {
+                "title": "Detail 2 Label",
+                "lightning:type": "lightning__textType"
+              },
+              "detail2Value": {
+                "title": "Detail 2 Value",
+                "lightning:type": "lightning__textType"
+              },
+              "hasDetail2": {
+                "title": "Has Detail 2",
+                "lightning:type": "lightning__booleanType"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

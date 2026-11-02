@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UiWidgetBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Asset Detail</masterLabel>
+    <description>Asset with product, serial, status, lifecycle timer (install to usage-end), owning account/contact, price/quantity/dates, and description.</description>
+    <widgetType>JSON</widgetType>
+</UiWidgetBundle>

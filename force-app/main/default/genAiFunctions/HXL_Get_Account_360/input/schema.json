@@ -1,0 +1,14 @@
+{
+    "unevaluatedProperties": false,
+    "properties": {
+        "accountRef": {
+            "title": "Account (name or Id)",
+            "description": "An Account name (e.g. \"Northwind Traders\") or a 15/18-char Account Id. Pass whatever the user said; the action resolves names on its own.",
+            "lightning:type": "lightning__textType",
+            "lightning:isPII": false,
+            "copilotAction:isUserInput": true
+        }
+    },
+    "required": ["accountRef"],
+    "lightning:type": "lightning__objectType"
+}

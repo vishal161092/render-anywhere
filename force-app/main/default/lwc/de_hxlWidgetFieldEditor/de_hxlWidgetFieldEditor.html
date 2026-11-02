@@ -1,0 +1,649 @@
+<template>
+    <lightning-card title="Widget Field Settings" icon-name="standard:custom_metadata_type">
+        <div slot="actions">
+            <lightning-button
+                label="Discard"
+                class="slds-var-m-right_x-small"
+                disabled={discardDisabled}
+                onclick={handleDiscard}
+            ></lightning-button>
+            <lightning-button
+                variant="brand"
+                label={saveLabel}
+                disabled={saveDisabled}
+                onclick={handleSave}
+            ></lightning-button>
+        </div>
+
+        <div class="slds-var-p-horizontal_medium slds-var-p-bottom_medium">
+            <p class="slds-text-body_regular slds-var-m-bottom_small">
+                Choose which fields each HXL widget shows. Saving updates the
+                HXL Widget Field custom metadata (a background deploy, usually
+                under a minute), and the change applies to every user.
+            </p>
+
+            <template lwc:if={saving}>
+                <div class="slds-var-m-bottom_small saving">
+                    <lightning-spinner
+                        alternative-text="Saving"
+                        size="small"
+                        class="saving__spinner"
+                    ></lightning-spinner>
+                    <span class="slds-var-m-left_large">Saving… the deploy is running.</span>
+                </div>
+            </template>
+
+            <template lwc:if={loading}>
+                <div class="loading">
+                    <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+                </div>
+            </template>
+
+            <template lwc:if={loadError}>
+                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+                    <h2>{loadError}</h2>
+                </div>
+            </template>
+
+            <template lwc:if={ready}>
+                <template lwc:if={showGallery}>
+                    <div class="gallery">
+                        <template for:each={cards} for:item="card">
+                            <article
+                                key={card.family}
+                                class="widget-card"
+                                role="button"
+                                tabindex="0"
+                                data-family={card.family}
+                                onclick={handleOpenCard}
+                                onkeydown={handleCardKey}
+                            >
+                                <div class="widget-card__head">
+                                    <lightning-icon icon-name={card.iconName} size="medium" alternative-text=""></lightning-icon>
+                                    <div class="widget-card__title">
+                                        <h3 class="slds-text-heading_small">{card.label}</h3>
+                                        <template lwc:if={card.hasVariants}>
+                                            <p class="slds-text-body_small slds-text-color_weak">{card.variantText}</p>
+                                        </template>
+                                    </div>
+                                </div>
+                                <p class="slds-text-body_small widget-card__desc">{card.description}</p>
+                                <div class="widget-card__foot">
+                                    <span class="slds-text-body_small slds-text-color_weak">{card.activeText}</span>
+                                    <template lwc:if={card.hasDirty}>
+                                        <span class="state">{card.dirtyText}</span>
+                                    </template>
+                                    <span class="widget-card__cta">
+                                        Customize
+                                        <lightning-icon icon-name="utility:chevronright" size="xx-small" alternative-text=""></lightning-icon>
+                                    </span>
+                                </div>
+                            </article>
+                        </template>
+                    </div>
+                </template>
+                <template lwc:else>
+                    <div class="editor-head slds-var-m-bottom_medium">
+                        <lightning-button
+                            label="All widgets"
+                            icon-name="utility:back"
+                            variant="base"
+                            onclick={handleBack}
+                        ></lightning-button>
+                        <h2 class="slds-text-heading_medium">{editorTitle}</h2>
+                        <template lwc:if={hasVariants}>
+                            <lightning-radio-group
+                                name="variant"
+                                label="Account type"
+                                variant="label-hidden"
+                                type="button"
+                                options={variantOptions}
+                                value={activeWidgetName}
+                                onchange={handleVariantChange}
+                            ></lightning-radio-group>
+                        </template>
+                    </div>
+                    <div class={editorBodyClass}>
+                        <div class="editor-main">
+                            <template for:each={sections} for:item="section">
+                                <div
+                                    key={section.name}
+                                    class={section.sectionClass}
+                                    data-section={section.name}
+                                    ondragover={handleDragOver}
+                                    ondrop={handleSectionDrop}
+                                >
+                                    <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-end slds-var-m-bottom_x-small">
+                                        <div>
+                                            <h3 class="slds-text-heading_small">
+                                                {section.label}
+                                                <span class="slds-text-body_small slds-text-color_weak">
+                                                    · {section.objectApiName}</span
+                                                >
+                                            </h3>
+                                            <p class="slds-text-body_small slds-text-color_weak">
+                                                {section.help}
+                                            </p>
+                                        </div>
+                                        <lightning-button
+                                            label="Add field"
+                                            icon-name="utility:add"
+                                            data-section={section.name}
+                                            disabled={section.addDisabled}
+                                            onclick={handleAddRow}
+                                        ></lightning-button>
+                                    </div>
+                                    <details class="tips slds-var-m-bottom_x-small">
+                                        <summary class="slds-text-body_small">Tips</summary>
+                                        <ul class="tips__list slds-text-body_small">
+                                            <template for:each={section.tips} for:item="tip">
+                                                <li key={tip.key}>
+                                                    <strong>{tip.title}:</strong> {tip.text}
+                                                </li>
+                                            </template>
+                                        </ul>
+                                    </details>
+
+                                    <template lwc:if={section.isList}>
+                                        <div class={section.list.bodyClass}>
+                                            <lightning-layout multiple-rows vertical-align="end">
+                                                <lightning-layout-item size="12" medium-device-size="3" padding="horizontal-small">
+                                                    <lightning-input
+                                                        type="toggle"
+                                                        label="Show this list"
+                                                        message-toggle-active="On"
+                                                        message-toggle-inactive="Off"
+                                                        checked={section.list.active}
+                                                        data-key={section.list.key}
+                                                        data-field="active"
+                                                        onchange={handleListInput}
+                                                    ></lightning-input>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item size="12" medium-device-size="3" padding="horizontal-small">
+                                                    <lightning-input
+                                                        label="Title"
+                                                        max-length="80"
+                                                        placeholder="Open Cases"
+                                                        value={section.list.title}
+                                                        data-key={section.list.key}
+                                                        data-field="title"
+                                                        onchange={handleListInput}
+                                                    ></lightning-input>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item size="12" medium-device-size="3" padding="horizontal-small">
+                                                    <lightning-combobox
+                                                        label="Header icon"
+                                                        field-level-help={help.headerIcon}
+                                                        options={iconOptions}
+                                                        value={section.list.icon}
+                                                        data-key={section.list.key}
+                                                        data-field="icon"
+                                                        onchange={handleListInput}
+                                                    ></lightning-combobox>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item size="12" medium-device-size="3" padding="horizontal-small">
+                                                    <lightning-radio-group
+                                                        name={section.list.key}
+                                                        label="Layout"
+                                                        type="button"
+                                                        options={layoutOptions}
+                                                        value={section.list.layout}
+                                                        data-key={section.list.key}
+                                                        data-field="layout"
+                                                        onchange={handleListInput}
+                                                    ></lightning-radio-group>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item size="12" medium-device-size="4" padding="horizontal-small">
+                                                    <lightning-combobox
+                                                        label="Object"
+                                                        placeholder="Pick an object"
+                                                        options={section.list.objectOptions}
+                                                        value={section.list.objectApiName}
+                                                        data-key={section.list.key}
+                                                        data-field="objectApiName"
+                                                        onchange={handleListInput}
+                                                    ></lightning-combobox>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item size="12" medium-device-size="4" padding="horizontal-small">
+                                                    <lightning-combobox
+                                                        label="Lookup to Account"
+                                                        field-level-help={help.parentField}
+                                                        options={section.list.parentOptions}
+                                                        value={section.list.parentField}
+                                                        disabled={section.needsObject}
+                                                        data-key={section.list.key}
+                                                        data-field="parentField"
+                                                        onchange={handleListInput}
+                                                    ></lightning-combobox>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item size="12" medium-device-size="4" padding="horizontal-small">
+                                                    <lightning-combobox
+                                                        label="Show"
+                                                        field-level-help={help.filter}
+                                                        options={section.list.filterOptions}
+                                                        value={section.list.filter}
+                                                        data-key={section.list.key}
+                                                        data-field="filter"
+                                                        onchange={handleListInput}
+                                                    ></lightning-combobox>
+                                                </lightning-layout-item>
+                                                <template for:each={section.objectKeys} for:item="obj">
+                                                    <template lwc:if={section.list.isFieldEquals}>
+                                                        <lightning-layout-item key={obj.filterKey} size="12" medium-device-size="6" padding="horizontal-small">
+                                                            <c-de_hxl-field-path-picker
+                                                                object-api-name={section.objectApiName}
+                                                                value={section.list.filterField}
+                                                                label="Where field"
+                                                                data-key={section.list.key}
+                                                                data-field="filterField"
+                                                                onchange={handleListFieldChange}
+                                                            ></c-de_hxl-field-path-picker>
+                                                        </lightning-layout-item>
+                                                        <lightning-layout-item key={obj.valueKey} size="12" medium-device-size="6" padding="horizontal-small">
+                                                            <lightning-input
+                                                                label="Equals (comma-separate several)"
+                                                                field-level-help={help.filterValue}
+                                                                max-length="255"
+                                                                placeholder="Installed, Registered"
+                                                                value={section.list.filterValue}
+                                                                data-key={section.list.key}
+                                                                data-field="filterValue"
+                                                                onchange={handleListInput}
+                                                            ></lightning-input>
+                                                        </lightning-layout-item>
+                                                    </template>
+                                                    <lightning-layout-item key={obj.sortKey} size="12" medium-device-size="6" padding="horizontal-small">
+                                                        <c-de_hxl-field-path-picker
+                                                            object-api-name={section.objectApiName}
+                                                            value={section.list.sortField}
+                                                            label="Sort by (blank: Created Date)"
+                                                            data-key={section.list.key}
+                                                            data-field="sortField"
+                                                            onchange={handleListFieldChange}
+                                                        ></c-de_hxl-field-path-picker>
+                                                    </lightning-layout-item>
+                                                </template>
+                                                <lightning-layout-item size="6" medium-device-size="3" padding="horizontal-small">
+                                                    <lightning-combobox
+                                                        label="Direction"
+                                                        options={sortOptions}
+                                                        value={section.list.sortValue}
+                                                        data-key={section.list.key}
+                                                        data-field="sortDescending"
+                                                        onchange={handleListInput}
+                                                    ></lightning-combobox>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item size="6" medium-device-size="3" padding="horizontal-small">
+                                                    <lightning-combobox
+                                                        label="Rows"
+                                                        options={limitOptions}
+                                                        value={section.list.limitValue}
+                                                        data-key={section.list.key}
+                                                        data-field="rowLimit"
+                                                        onchange={handleListInput}
+                                                    ></lightning-combobox>
+                                                </lightning-layout-item>
+                                            </lightning-layout>
+                                            <details class="slds-var-m-top_small slds-var-p-horizontal_small">
+                                                <summary class="slds-text-body_small">Advanced: custom Apex provider</summary>
+                                                <p class="slds-text-body_small slds-text-color_weak slds-var-m-vertical_x-small">
+                                                    Use at your own risk. A class implementing
+                                                    HXL_RelatedListProvider builds the rows instead of the
+                                                    query above; the columns below are passed to it as config.
+                                                </p>
+                                                <lightning-input
+                                                    label="Provider class"
+                                                    max-length="255"
+                                                    placeholder="MyCompany_DeviceListProvider"
+                                                    value={section.list.providerClass}
+                                                    data-key={section.list.key}
+                                                    data-field="providerClass"
+                                                    onchange={handleListInput}
+                                                ></lightning-input>
+                                            </details>
+                                            <template lwc:if={section.list.hasIssue}>
+                                                <p class="slds-var-m-top_x-small slds-var-p-horizontal_small warning-text list-issue">
+                                                    <lightning-icon
+                                                        icon-name="utility:warning"
+                                                        variant="warning"
+                                                        size="xx-small"
+                                                        alternative-text="Warning"
+                                                    ></lightning-icon>
+                                                    <span class="slds-var-m-left_x-small">{section.list.issue}</span>
+                                                </p>
+                                            </template>
+                                            <template lwc:if={section.list.stateLabel}>
+                                                <span class="state list-state">{section.list.stateLabel}</span>
+                                            </template>
+                                        </div>
+                                    </template>
+
+                                    <template lwc:if={section.needsObject}>
+                                        <p class="slds-text-body_small slds-text-color_weak empty">
+                                            Pick the list's object above, then add its columns.
+                                        </p>
+                                    </template>
+                                    <template lwc:elseif={section.hasRows}>
+                                        <template for:each={section.objectKeys} for:item="obj">
+                                        <div key={obj.key} class="table-scroll">
+                                        <table class="slds-table slds-table_bordered slds-table_cell-buffer fields-table">
+                                            <thead>
+                                                <tr class="slds-line-height_reset">
+                                                    <th scope="col" class="col-order">Order</th>
+                                                    <th scope="col" class="col-active">Active</th>
+                                                    <template lwc:if={section.hasTypes}>
+                                                        <th scope="col" class="col-type">
+                                                            Type <lightning-helptext content={section.typeHelp}></lightning-helptext>
+                                                        </th>
+                                                    </template>
+                                                    <th scope="col" class="col-field">
+                                                        Field <lightning-helptext content={help.field}></lightning-helptext>
+                                                    </th>
+                                                    <th scope="col" class="col-label">Label</th>
+                                                    <template lwc:if={section.usesGroup}>
+                                                        <th scope="col" class="col-group">
+                                                            Group <lightning-helptext content={help.group}></lightning-helptext>
+                                                        </th>
+                                                    </template>
+                                                    <th scope="col" class="col-format">
+                                                        Format <lightning-helptext content={help.format}></lightning-helptext>
+                                                    </th>
+                                                    <th scope="col" class="col-suffix">
+                                                        Suffix <lightning-helptext content={help.suffix}></lightning-helptext>
+                                                    </th>
+                                                    <template lwc:if={section.hasTypes}>
+                                                        <th scope="col" class="col-map">
+                                                            Value map <lightning-helptext content={help.valueMap}></lightning-helptext>
+                                                        </th>
+                                                        <th scope="col" class="col-fallback">
+                                                            Fallback <lightning-helptext content={help.fallback}></lightning-helptext>
+                                                        </th>
+                                                    </template>
+                                                    <th scope="col" class="col-hide">
+                                                        Hide if blank <lightning-helptext content={help.hide}></lightning-helptext>
+                                                    </th>
+                                                    <th scope="col" class="col-state"><span class="slds-assistive-text">State</span></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <template for:each={section.rows} for:item="row">
+                                                    <tr
+                                                        key={row.key}
+                                                        class={row.rowClass}
+                                                        data-row={row.key}
+                                                        data-key={row.key}
+                                                        data-section={section.name}
+                                                        ondragover={handleDragOver}
+                                                        ondrop={handleRowDrop}
+                                                    >
+                                                        <td class="col-order">
+                                                            <span
+                                                                class="grip"
+                                                                title="Drag to move or reorder"
+                                                                draggable="true"
+                                                                data-key={row.key}
+                                                                ondragstart={handleDragStart}
+                                                                ondragend={handleDragEnd}
+                                                            >
+                                                                <lightning-icon
+                                                                    icon-name="utility:drag_and_drop"
+                                                                    size="xx-small"
+                                                                    alternative-text="Drag to move"
+                                                                ></lightning-icon>
+                                                            </span>
+                                                            <lightning-button-icon
+                                                                icon-name="utility:arrowup"
+                                                                variant="bare"
+                                                                alternative-text="Move up"
+                                                                data-key={row.key}
+                                                                data-direction="up"
+                                                                disabled={row.isFirst}
+                                                                onclick={handleMove}
+                                                            ></lightning-button-icon>
+                                                            <lightning-button-icon
+                                                                icon-name="utility:arrowdown"
+                                                                variant="bare"
+                                                                alternative-text="Move down"
+                                                                data-key={row.key}
+                                                                data-direction="down"
+                                                                disabled={row.isLast}
+                                                                onclick={handleMove}
+                                                            ></lightning-button-icon>
+                                                        </td>
+                                                        <td class="col-active">
+                                                            <lightning-input
+                                                                type="toggle"
+                                                                label="Active"
+                                                                variant="label-hidden"
+                                                                message-toggle-active=""
+                                                                message-toggle-inactive=""
+                                                                checked={row.active}
+                                                                data-key={row.key}
+                                                                data-field="active"
+                                                                onchange={handleInput}
+                                                            ></lightning-input>
+                                                        </td>
+                                                        <template lwc:if={section.hasTypes}>
+                                                            <td class="col-type">
+                                                                <lightning-combobox
+                                                                    label="Type"
+                                                                    variant="label-hidden"
+                                                                    options={row.typeOptions}
+                                                                    value={row.columnType}
+                                                                    data-key={row.key}
+                                                                    data-field="columnType"
+                                                                    onchange={handleInput}
+                                                                ></lightning-combobox>
+                                                            </td>
+                                                        </template>
+                                                        <td class="col-field">
+                                                            <c-de_hxl-field-path-picker
+                                                                object-api-name={section.objectApiName}
+                                                                value={row.fieldPath}
+                                                                label="Field"
+                                                                data-key={row.key}
+                                                                onchange={handleFieldChange}
+                                                            ></c-de_hxl-field-path-picker>
+                                                        </td>
+                                                        <td>
+                                                            <lightning-input
+                                                                label="Label"
+                                                                variant="label-hidden"
+                                                                max-length="80"
+                                                                placeholder={row.fieldLabel}
+                                                                value={row.label}
+                                                                data-key={row.key}
+                                                                data-field="label"
+                                                                onchange={handleInput}
+                                                            ></lightning-input>
+                                                        </td>
+                                                        <template lwc:if={section.usesGroup}>
+                                                            <td>
+                                                                <lightning-input
+                                                                    label="Group"
+                                                                    variant="label-hidden"
+                                                                    max-length="80"
+                                                                    value={row.groupTitle}
+                                                                    data-key={row.key}
+                                                                    data-field="groupTitle"
+                                                                    onchange={handleInput}
+                                                                ></lightning-input>
+                                                            </td>
+                                                        </template>
+                                                        <td class="col-format">
+                                                            <lightning-combobox
+                                                                label="Format"
+                                                                variant="label-hidden"
+                                                                options={formatOptions}
+                                                                value={row.format}
+                                                                data-key={row.key}
+                                                                data-field="format"
+                                                                onchange={handleInput}
+                                                            ></lightning-combobox>
+                                                        </td>
+                                                        <td class="col-suffix">
+                                                            <lightning-input
+                                                                label="Suffix"
+                                                                variant="label-hidden"
+                                                                max-length="20"
+                                                                value={row.suffix}
+                                                                data-key={row.key}
+                                                                data-field="suffix"
+                                                                onchange={handleInput}
+                                                            ></lightning-input>
+                                                        </td>
+                                                        <template lwc:if={section.hasTypes}>
+                                                            <td>
+                                                                <lightning-input
+                                                                    label="Value map"
+                                                                    variant="label-hidden"
+                                                                    max-length="255"
+                                                                    disabled={row.noMap}
+                                                                    placeholder={row.mapPlaceholder}
+                                                                    value={row.valueMap}
+                                                                    data-key={row.key}
+                                                                    data-field="valueMap"
+                                                                    onchange={handleInput}
+                                                                ></lightning-input>
+                                                            </td>
+                                                            <td>
+                                                                <lightning-input
+                                                                    label="Fallback"
+                                                                    variant="label-hidden"
+                                                                    max-length="255"
+                                                                    disabled={row.noMap}
+                                                                    placeholder={row.fallbackPlaceholder}
+                                                                    value={row.fallback}
+                                                                    data-key={row.key}
+                                                                    data-field="fallback"
+                                                                    onchange={handleInput}
+                                                                ></lightning-input>
+                                                            </td>
+                                                        </template>
+                                                        <td class="col-hide">
+                                                            <lightning-input
+                                                                type="checkbox"
+                                                                label="Hide when blank"
+                                                                variant="label-hidden"
+                                                                checked={row.hideWhenBlank}
+                                                                data-key={row.key}
+                                                                data-field="hideWhenBlank"
+                                                                onchange={handleInput}
+                                                            ></lightning-input>
+                                                        </td>
+                                                        <td class="col-state">
+                                                            <template lwc:if={row.isNew}>
+                                                                <lightning-button-icon
+                                                                    icon-name="utility:delete"
+                                                                    variant="bare"
+                                                                    alternative-text="Remove new row"
+                                                                    data-key={row.key}
+                                                                    onclick={handleRemoveNew}
+                                                                ></lightning-button-icon>
+                                                            </template>
+                                                            <template lwc:if={row.stateLabel}>
+                                                                <span class="state">{row.stateLabel}</span>
+                                                            </template>
+                                                        </td>
+                                                    </tr>
+                                                    <template lwc:if={row.hasWarnings}>
+                                                        <tr key={row.warningKey} class="warning-row">
+                                                            <td colspan={section.columnCount}>
+                                                                <lightning-icon
+                                                                    icon-name="utility:warning"
+                                                                    variant="warning"
+                                                                    size="xx-small"
+                                                                    alternative-text="Warning"
+                                                                ></lightning-icon>
+                                                                <span class="slds-var-m-left_x-small warning-text">{row.warningText}</span>
+                                                            </td>
+                                                        </tr>
+                                                    </template>
+                                                </template>
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                        </template>
+                                    </template>
+                                    <template lwc:else>
+                                        <p class="slds-text-body_small slds-text-color_weak empty">
+                                            No fields yet. The widget hides this section. Add a field or drag one here.
+                                        </p>
+                                    </template>
+                                </div>
+                            </template>
+                            <p class="slds-text-body_small slds-text-color_weak">
+                                To remove a saved row, switch it off. Custom metadata
+                                can't be deleted from here; Setup > Custom Metadata
+                                Types > HXL Widget Field can delete it.
+                            </p>
+                        </div>
+
+                        <div class="editor-aside">
+                            <div class="preview">
+                                <div class="preview__head slds-var-m-bottom_x-small">
+                                    <h3 class="slds-text-heading_small preview__title">Preview</h3>
+                                    <lightning-button-icon
+                                        icon-name={previewToggleIcon}
+                                        variant="border-filled"
+                                        size="small"
+                                        alternative-text={previewToggleLabel}
+                                        title={previewToggleLabel}
+                                        aria-expanded={previewExpanded}
+                                        onclick={handleTogglePreview}
+                                    ></lightning-button-icon>
+                                </div>
+                                <div class="preview__body">
+                                <template lwc:if={previewUnavailable}>
+                                    <p class="slds-text-body_small slds-text-color_weak">
+                                        Person Accounts aren't enabled in this org, so
+                                        Account 360 always uses the business layout.
+                                    </p>
+                                </template>
+                                <template lwc:else>
+                                    <p class="slds-text-body_small slds-text-color_weak slds-var-m-bottom_x-small">
+                                        Runs your unsaved settings through the widget
+                                        code for a real record.
+                                    </p>
+                                    <template for:each={pickerKeys} for:item="picker">
+                                        <lightning-record-picker
+                                            key={picker.key}
+                                            label={previewLabel}
+                                            placeholder={previewPlaceholder}
+                                            object-api-name={previewObject}
+                                            filter={previewFilter}
+                                            onchange={handleAccountChange}
+                                        ></lightning-record-picker>
+                                    </template>
+                                    <div class="slds-var-m-vertical_x-small">
+                                        <lightning-button
+                                            label="Refresh preview"
+                                            icon-name="utility:refresh"
+                                            disabled={previewDisabled}
+                                            onclick={handleRefreshPreview}
+                                        ></lightning-button>
+                                    </div>
+                                    <template lwc:if={previewLoading}>
+                                        <div class="loading">
+                                            <lightning-spinner alternative-text="Loading preview" size="small"></lightning-spinner>
+                                        </div>
+                                    </template>
+                                    <template lwc:if={previewMessage}>
+                                        <p class="slds-text-body_small slds-text-color_error">{previewMessage}</p>
+                                    </template>
+                                    <template lwc:if={previewResult}>
+                                        <c-de_hxl-widget-field-preview
+                                            widget={activeWidgetName}
+                                            result={previewResult}
+                                        ></c-de_hxl-widget-field-preview>
+                                    </template>
+                                </template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>

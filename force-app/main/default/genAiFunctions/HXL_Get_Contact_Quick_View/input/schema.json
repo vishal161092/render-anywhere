@@ -1,0 +1,14 @@
+{
+    "unevaluatedProperties": false,
+    "properties": {
+        "contactRef": {
+            "title": "Contact (name or Id)",
+            "description": "A Contact name (e.g. \"Jane Doe\") or a 15/18-char Contact Id. Pass whatever the user said; the action resolves names on its own.",
+            "lightning:type": "lightning__textType",
+            "lightning:isPII": false,
+            "copilotAction:isUserInput": true
+        }
+    },
+    "required": ["contactRef"],
+    "lightning:type": "lightning__objectType"
+}

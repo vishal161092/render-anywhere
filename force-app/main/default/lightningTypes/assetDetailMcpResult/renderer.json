@@ -1,0 +1,40 @@
+{
+  "renderer": {
+    "componentOverrides": {
+      "$": {
+        "definition": "@widget/c/assetDetail",
+        "attributes": {
+          "assetName": "{!$attrs.outputValues.detail.assetName}",
+          "serialNumber": "{!$attrs.outputValues.detail.serialNumber}",
+          "status": "{!$attrs.outputValues.detail.status}",
+          "statusVariant": "{!$attrs.outputValues.detail.statusVariant}",
+          "productName": "{!$attrs.outputValues.detail.productName}",
+          "productCode": "{!$attrs.outputValues.detail.productCode}",
+          "quantityDisplay": "{!$attrs.outputValues.detail.quantityDisplay}",
+          "priceDisplay": "{!$attrs.outputValues.detail.priceDisplay}",
+          "assetLevelDisplay": "{!$attrs.outputValues.detail.assetLevelDisplay}",
+          "installDisplay": "{!$attrs.outputValues.detail.installDisplay}",
+          "purchaseDisplay": "{!$attrs.outputValues.detail.purchaseDisplay}",
+          "usageEndDisplay": "{!$attrs.outputValues.detail.usageEndDisplay}",
+          "hasLifecycle": "{!$attrs.outputValues.detail.hasLifecycle}",
+          "lifecycleTitle": "{!$attrs.outputValues.detail.lifecycleTitle}",
+          "lifecycleStatus": "{!$attrs.outputValues.detail.lifecycleStatus}",
+          "lifecycleStartDisplay": "{!$attrs.outputValues.detail.lifecycleStartDisplay}",
+          "lifecycleEndDisplay": "{!$attrs.outputValues.detail.lifecycleEndDisplay}",
+          "lifecycleVariant": "{!$attrs.outputValues.detail.lifecycleVariant}",
+          "lifecycleColor": "{!$attrs.outputValues.detail.lifecycleColor}",
+          "lifecyclePercent": "{!$attrs.outputValues.detail.lifecyclePercent}",
+          "description": "{!$attrs.outputValues.detail.description}",
+          "accountName": "{!$attrs.outputValues.detail.accountName}",
+          "accountUrl": "{!$attrs.outputValues.detail.accountUrl}",
+          "contactName": "{!$attrs.outputValues.detail.contactName}",
+          "contactInitials": "{!$attrs.outputValues.detail.contactInitials}",
+          "contactUrl": "{!$attrs.outputValues.detail.contactUrl}",
+          "salesforceUrl": "{!$attrs.outputValues.detail.salesforceUrl}",
+          "hasDetails": "{!$attrs.outputValues.detail.hasDetails}",
+          "details": "{!$attrs.outputValues.detail.details}"
+        }
+      }
+    }
+  }
+}

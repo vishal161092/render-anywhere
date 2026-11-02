@@ -1,0 +1,22 @@
+<template>
+    <div class="path">
+        <template for:each={levels} for:item="level">
+            <lightning-combobox
+                key={level.key}
+                class="path__level"
+                label={level.label}
+                variant="label-hidden"
+                placeholder="Select a field"
+                options={level.options}
+                value={level.value}
+                data-depth={level.depth}
+                disabled={disabled}
+                dropdown-alignment="auto"
+                onchange={handleChange}
+            ></lightning-combobox>
+        </template>
+    </div>
+    <template lwc:if={hasError}>
+        <p class="slds-text-color_error slds-text-body_small">{error}</p>
+    </template>
+</template>

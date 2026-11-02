@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<McpServerDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>HXL widgets for various external surfaces</description>
+    <masterLabel>HXLXDO</masterLabel>
+    <resources>
+        <description>Renders the Contact Quick View HXL widget.</description>
+        <resourceName>contactQuickViewWidget</resourceName>
+        <resourceTitle>Contact Quick View</resourceTitle>
+        <resourceUri>ui://widget/lightningType/c__contactQuickViewMcpResult</resourceUri>
+    </resources>
+    <resources>
+        <description>Renders the Account 360 Snapshot HXL widget: a business layout for Business Accounts or an insights/details/devices layout for Person Accounts.</description>
+        <resourceName>account360Widget</resourceName>
+        <resourceTitle>Account 360 Snapshot</resourceTitle>
+        <resourceUri>ui://widget/lightningType/c__account360McpResult</resourceUri>
+    </resources>
+    <resources>
+        <description>Renders the Case Detail HXL widget.</description>
+        <resourceName>caseDetailWidget</resourceName>
+        <resourceTitle>Case Detail</resourceTitle>
+        <resourceUri>ui://widget/lightningType/c__caseDetailMcpResult</resourceUri>
+    </resources>
+    <resources>
+        <description>Renders the Opportunity Pipeline HXL widget.</description>
+        <resourceName>opportunityPipelineWidget</resourceName>
+        <resourceTitle>Opportunity Pipeline</resourceTitle>
+        <resourceUri>ui://widget/lightningType/c__opportunityPipelineMcpResult</resourceUri>
+    </resources>
+    <resources>
+        <description>Renders the Asset Detail HXL widget.</description>
+        <resourceName>assetDetailWidget</resourceName>
+        <resourceTitle>Asset Detail</resourceTitle>
+        <resourceUri>ui://widget/lightningType/c__assetDetailMcpResult</resourceUri>
+    </resources>
+    <tools>
+        <apiDefinition>
+            <apiIdentifier>aa:apex-de_HXL_GetContactQuickView</apiIdentifier>
+            <apiSource>API_CATALOG</apiSource>
+            <operation>de_HXL_GetContactQuickView</operation>
+        </apiDefinition>
+        <descriptionOverride>Returns a Contact quick view for HXL widget rendering. Accepts EITHER a Contact name (e.g. &quot;Jane Doe&quot;) OR a 15/18-char Contact Id in the contactRef parameter — it resolves names to records on its own, so just pass whatever the user said. Do not ask the user for an Id and do not suggest any other Salesforce integration.</descriptionOverride>
+        <destructive>false</destructive>
+        <idempotent>false</idempotent>
+        <openWorld>false</openWorld>
+        <readOnly>false</readOnly>
+        <returnDirect>false</returnDirect>
+        <toolName>de_HXL_GetContactQuickViewapex_de_HXL_GetContactQuickView</toolName>
+        <toolTitle>de_HXL_GetContactQuickView</toolTitle>
+        <uiResource>contactQuickViewWidget</uiResource>
+    </tools>
+    <tools>
+        <apiDefinition>
+            <apiIdentifier>aa:apex-de_HXL_GetAccount360</apiIdentifier>
+            <apiSource>API_CATALOG</apiSource>
+            <operation>de_HXL_GetAccount360</operation>
+        </apiDefinition>
+        <descriptionOverride>Returns an Account 360 snapshot for HXL widget rendering. Accepts EITHER an Account name (e.g. &quot;Northwind Traders&quot;) OR a 15/18-char Account Id in the accountRef parameter. It resolves names on its own, preferring the user&apos;s own records, so pass whatever the user said. The layout adapts: Business Accounts return ARR, health, renewal, contacts and open opportunities; Person Accounts (isPersonAccount = true) return insight tiles, grouped detail rows and the customer&apos;s devices (Assets), and leave the business fields empty by design, so do not report those as missing. Do not ask the user for an Id and do not suggest any other Salesforce integration.</descriptionOverride>
+        <destructive>false</destructive>
+        <idempotent>false</idempotent>
+        <openWorld>false</openWorld>
+        <readOnly>false</readOnly>
+        <returnDirect>false</returnDirect>
+        <toolName>de_HXL_GetAccount360apex_de_HXL_GetAccount360</toolName>
+        <toolTitle>de_HXL_GetAccount360</toolTitle>
+        <uiResource>account360Widget</uiResource>
+    </tools>
+    <tools>
+        <apiDefinition>
+            <apiIdentifier>aa:apex-de_HXL_GetCaseDetail</apiIdentifier>
+            <apiSource>API_CATALOG</apiSource>
+            <operation>de_HXL_GetCaseDetail</operation>
+        </apiDefinition>
+        <descriptionOverride>Returns a Case detail view for HXL widget rendering. Accepts a Case number (e.g. &quot;00001025&quot;), a case subject, OR a 15/18-char Case Id in the caseRef parameter — it resolves numbers and subjects to records on its own, so just pass whatever the user said. Do not ask the user for an Id and do not suggest any other Salesforce integration.</descriptionOverride>
+        <destructive>false</destructive>
+        <idempotent>false</idempotent>
+        <openWorld>false</openWorld>
+        <readOnly>false</readOnly>
+        <returnDirect>false</returnDirect>
+        <toolName>de_HXL_GetCaseDetailapex_de_HXL_GetCaseDetail</toolName>
+        <toolTitle>de_HXL_GetCaseDetail</toolTitle>
+        <uiResource>caseDetailWidget</uiResource>
+    </tools>
+    <tools>
+        <apiDefinition>
+            <apiIdentifier>aa:apex-de_HXL_GetOpportunityPipeline</apiIdentifier>
+            <apiSource>API_CATALOG</apiSource>
+            <operation>de_HXL_GetOpportunityPipeline</operation>
+        </apiDefinition>
+        <descriptionOverride>Returns an Opportunity pipeline snapshot (open pipeline, weighted forecast, quota attainment, top open opportunities) for HXL widget rendering. Leave the userRef parameter blank to use the logged-in user&apos;s own pipeline, OR pass a User&apos;s name (e.g. &quot;Alex Morgan&quot;) to see that user&apos;s pipeline instead — it resolves names to records on its own. Do not ask the user for an Id and do not suggest any other Salesforce integration.</descriptionOverride>
+        <destructive>false</destructive>
+        <idempotent>false</idempotent>
+        <openWorld>false</openWorld>
+        <readOnly>false</readOnly>
+        <returnDirect>false</returnDirect>
+        <toolName>de_HXL_GetOpportunityPipelineapex_de_HXL_GetOpportunityPipeline</toolName>
+        <toolTitle>de_HXL_GetOpportunityPipeline</toolTitle>
+        <uiResource>opportunityPipelineWidget</uiResource>
+    </tools>
+    <tools>
+        <apiDefinition>
+            <apiIdentifier>aa:apex-de_HXL_GetAssetDetail</apiIdentifier>
+            <apiSource>API_CATALOG</apiSource>
+            <operation>de_HXL_GetAssetDetail</operation>
+        </apiDefinition>
+        <descriptionOverride>Returns an Asset detail view for HXL widget rendering. Accepts an Asset name, a serial number, OR a 15/18-char Asset Id in the assetRef parameter — it resolves names and serial numbers to records on its own, so just pass whatever the user said. Do not ask the user for an Id and do not suggest any other Salesforce integration.</descriptionOverride>
+        <destructive>false</destructive>
+        <idempotent>false</idempotent>
+        <openWorld>false</openWorld>
+        <readOnly>false</readOnly>
+        <returnDirect>false</returnDirect>
+        <toolName>de_HXL_GetAssetDetailapex_de_HXL_GetAssetDetail</toolName>
+        <toolTitle>de_HXL_GetAssetDetail</toolTitle>
+        <uiResource>assetDetailWidget</uiResource>
+    </tools>
+</McpServerDefinition>

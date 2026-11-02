@@ -1,0 +1,10 @@
+.path {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+}
+
+.path__level {
+    flex: 1 1 11rem;
+    min-width: 11rem;
+}

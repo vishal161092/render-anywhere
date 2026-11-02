@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Returns an Account 360 snapshot rendered as the Account 360 Snapshot HXL widget. Business Accounts: ARR, health, renewal, open pipeline, key contacts, top opportunities. Person Accounts: insight tiles, grouped details and the customer's devices (Assets); business fields are intentionally empty there. Accepts EITHER an Account name (e.g. "Northwind Traders") OR a 15/18-char Account Id in accountRef; it resolves names to records on its own, so pass whatever the user said and do not ask the user for an Id first.</description>
+    <developerName>HXL_Get_Account_360</developerName>
+    <invocationTarget>de_HXL_GetAccount360</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+    <localDeveloperName>HXL_Get_Account_360</localDeveloperName>
+    <masterLabel>HXL Get Account 360 Snapshot</masterLabel>
+</GenAiFunction>

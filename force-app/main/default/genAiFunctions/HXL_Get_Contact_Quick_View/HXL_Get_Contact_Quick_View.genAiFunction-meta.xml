@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Returns a Contact quick view (name, title, account, email, phone, recent activities) rendered as the Contact Quick View HXL widget. Accepts EITHER a Contact name (e.g. "Jane Doe") OR a 15/18-char Contact Id in contactRef; it resolves names to records on its own, so pass whatever the user said and do not ask the user for an Id first.</description>
+    <developerName>HXL_Get_Contact_Quick_View</developerName>
+    <invocationTarget>de_HXL_GetContactQuickView</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+    <localDeveloperName>HXL_Get_Contact_Quick_View</localDeveloperName>
+    <masterLabel>HXL Get Contact Quick View</masterLabel>
+</GenAiFunction>

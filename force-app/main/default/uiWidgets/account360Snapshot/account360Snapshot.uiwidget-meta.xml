@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UiWidgetBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Account 360 Snapshot</masterLabel>
+    <description>Account overview that adapts to the record. Business Accounts: ARR, health, renewal, owner. Person Accounts: insight tiles and grouped details. Both: two related lists (card list or table), all set in Widget Field Settings.</description>
+    <widgetType>JSON</widgetType>
+</UiWidgetBundle>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Widget__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>Which widget view this row belongs to: Account 360 (Person or Business), Contact Quick View, Case Detail, Opportunity Pipeline, or Asset Detail.</inlineHelpText>
+    <label>Widget</label>
+    <required>true</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>PersonAccount360</fullName>
+                <default>true</default>
+                <label>PersonAccount360</label>
+            </value>
+            <value>
+                <fullName>BusinessAccount360</fullName>
+                <default>false</default>
+                <label>BusinessAccount360</label>
+            </value>
+            <value>
+                <fullName>ContactQuickView</fullName>
+                <default>false</default>
+                <label>ContactQuickView</label>
+            </value>
+            <value>
+                <fullName>CaseDetail</fullName>
+                <default>false</default>
+                <label>CaseDetail</label>
+            </value>
+            <value>
+                <fullName>OpportunityPipeline</fullName>
+                <default>false</default>
+                <label>OpportunityPipeline</label>
+            </value>
+            <value>
+                <fullName>AssetDetail</fullName>
+                <default>false</default>
+                <label>AssetDetail</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

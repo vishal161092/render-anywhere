@@ -1,0 +1,14 @@
+{
+    "unevaluatedProperties": false,
+    "properties": {
+        "caseRef": {
+            "title": "Case (number, subject, or Id)",
+            "description": "A Case number (e.g. \"00001025\"), case subject text, or a 15/18-char Case Id. Pass whatever the user said; the action resolves it on its own.",
+            "lightning:type": "lightning__textType",
+            "lightning:isPII": false,
+            "copilotAction:isUserInput": true
+        }
+    },
+    "required": ["caseRef"],
+    "lightning:type": "lightning__objectType"
+}

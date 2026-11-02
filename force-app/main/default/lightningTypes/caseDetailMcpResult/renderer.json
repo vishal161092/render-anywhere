@@ -1,0 +1,37 @@
+{
+  "renderer": {
+    "componentOverrides": {
+      "$": {
+        "definition": "@widget/c/caseDetail",
+        "attributes": {
+          "caseNumber": "{!$attrs.outputValues.detail.caseNumber}",
+          "subject": "{!$attrs.outputValues.detail.subject}",
+          "priority": "{!$attrs.outputValues.detail.priority}",
+          "priorityVariant": "{!$attrs.outputValues.detail.priorityVariant}",
+          "status": "{!$attrs.outputValues.detail.status}",
+          "statusVariant": "{!$attrs.outputValues.detail.statusVariant}",
+          "origin": "{!$attrs.outputValues.detail.origin}",
+          "createdDisplay": "{!$attrs.outputValues.detail.createdDisplay}",
+          "slaTitle": "{!$attrs.outputValues.detail.slaTitle}",
+          "slaStatus": "{!$attrs.outputValues.detail.slaStatus}",
+          "slaDueDisplay": "{!$attrs.outputValues.detail.slaDueDisplay}",
+          "slaPercent": "{!$attrs.outputValues.detail.slaPercent}",
+          "slaVariant": "{!$attrs.outputValues.detail.slaVariant}",
+          "slaColor": "{!$attrs.outputValues.detail.slaColor}",
+          "description": "{!$attrs.outputValues.detail.description}",
+          "accountName": "{!$attrs.outputValues.detail.accountName}",
+          "accountUrl": "{!$attrs.outputValues.detail.accountUrl}",
+          "contactName": "{!$attrs.outputValues.detail.contactName}",
+          "contactInitials": "{!$attrs.outputValues.detail.contactInitials}",
+          "contactUrl": "{!$attrs.outputValues.detail.contactUrl}",
+          "ownerName": "{!$attrs.outputValues.detail.ownerName}",
+          "ownerInitials": "{!$attrs.outputValues.detail.ownerInitials}",
+          "salesforceUrl": "{!$attrs.outputValues.detail.salesforceUrl}",
+          "kbArticles": "{!$attrs.outputValues.detail.kbArticles}",
+          "hasDetails": "{!$attrs.outputValues.detail.hasDetails}",
+          "details": "{!$attrs.outputValues.detail.details}"
+        }
+      }
+    }
+  }
+}

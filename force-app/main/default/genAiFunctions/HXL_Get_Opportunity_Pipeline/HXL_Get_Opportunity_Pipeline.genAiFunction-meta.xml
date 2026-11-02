@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Returns an Opportunity pipeline snapshot (open pipeline, weighted forecast, quota attainment, top open opportunities) rendered as the Opportunity Pipeline HXL widget. Leave userRef blank to use the logged-in user's own pipeline, or pass a User's name (e.g. "Alex Morgan") to see that user's pipeline; it resolves names on its own. Do not ask the user for an Id.</description>
+    <developerName>HXL_Get_Opportunity_Pipeline</developerName>
+    <invocationTarget>de_HXL_GetOpportunityPipeline</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+    <localDeveloperName>HXL_Get_Opportunity_Pipeline</localDeveloperName>
+    <masterLabel>HXL Get Opportunity Pipeline</masterLabel>
+</GenAiFunction>

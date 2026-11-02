@@ -1,0 +1,13 @@
+{
+  "title" : "Contact Quick View MCP Output Values",
+  "description" : "Payload fields from the de_HXL_GetContactQuickView MCP tool response",
+  "lightning:type" : "lightning__objectType",
+  "unevaluatedProperties" : false,
+  "lightning:tags" : [ "mcp" ],
+  "properties" : {
+    "view" : {
+      "title" : "Contact Quick View",
+      "lightning:type" : "@apexClassType/c__de_HXL_GetContactQuickView$Result"
+    }
+  }
+}

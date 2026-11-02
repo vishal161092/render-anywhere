@@ -1,0 +1,857 @@
+{
+    "title": "Account 360 Snapshot Widget",
+    "description": "Account overview: business or Person Account layout (KPIs or insight tiles, grouped details) plus two configurable related lists (card list or table).",
+    "type": "object",
+    "properties": {
+        "attributes": {
+            "lightning:type": "lightning__objectType",
+            "properties": {
+                "name": {
+                    "title": "Account Name",
+                    "description": "Account.Name",
+                    "lightning:type": "lightning__textType"
+                },
+                "tier": {
+                    "title": "Tier",
+                    "description": "Rating-derived tier label",
+                    "lightning:type": "lightning__textType"
+                },
+                "headerSubtitle": {
+                    "title": "Header Subtitle",
+                    "description": "Industry • City, State",
+                    "lightning:type": "lightning__textType"
+                },
+                "arrDisplay": {
+                    "title": "ARR (display)",
+                    "description": "Formatted annual revenue",
+                    "lightning:type": "lightning__textType"
+                },
+                "arrDelta": {
+                    "title": "ARR Delta",
+                    "description": "Growth indicator caption",
+                    "lightning:type": "lightning__textType"
+                },
+                "employeesDisplay": {
+                    "title": "Employees (display)",
+                    "description": "Formatted employee count",
+                    "lightning:type": "lightning__textType"
+                },
+                "healthDisplay": {
+                    "title": "Health (display)",
+                    "description": "Pre-formatted health string, empty when N/A",
+                    "lightning:type": "lightning__textType"
+                },
+                "healthValue": {
+                    "title": "Health Value",
+                    "description": "Numeric health 0-100",
+                    "lightning:type": "lightning__numberType"
+                },
+                "healthVariant": {
+                    "title": "Health Variant",
+                    "description": "Semantic token for health score",
+                    "lightning:type": "lightning__textType"
+                },
+                "renewalDisplay": {
+                    "title": "Renewal (display)",
+                    "description": "Formatted renewal date",
+                    "lightning:type": "lightning__textType"
+                },
+                "renewalStatus": {
+                    "title": "Renewal Status",
+                    "description": "On track / At risk label",
+                    "lightning:type": "lightning__textType"
+                },
+                "renewalVariant": {
+                    "title": "Renewal Variant",
+                    "description": "Badge variant token for renewal status",
+                    "lightning:type": "lightning__textType"
+                },
+                "ownerName": {
+                    "title": "Owner Name",
+                    "description": "Account owner full name",
+                    "lightning:type": "lightning__textType"
+                },
+                "ownerInitials": {
+                    "title": "Owner Initials",
+                    "description": "Owner initials for avatar",
+                    "lightning:type": "lightning__textType"
+                },
+                "salesforceUrl": {
+                    "title": "Salesforce URL",
+                    "description": "Deep link to the Account record",
+                    "lightning:type": "lightning__urlType"
+                },
+                "openPipelineDisplay": {
+                    "title": "Open Pipeline",
+                    "description": "Pipeline summary caption",
+                    "lightning:type": "lightning__textType"
+                },
+                "contacts": {
+                    "title": "Recent Contacts",
+                    "description": "Top related contacts",
+                    "type": "array",
+                    "items": {
+                        "lightning:type": "lightning__objectType",
+                        "properties": {
+                            "name": {
+                                "title": "Name",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "title": {
+                                "title": "Title",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "initials": {
+                                "title": "Initials",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "lastTouch": {
+                                "title": "Last Touch",
+                                "lightning:type": "lightning__textType"
+                            }
+                        }
+                    }
+                },
+                "opportunities": {
+                    "title": "Open Opportunities",
+                    "description": "Top open opportunities",
+                    "type": "array",
+                    "items": {
+                        "lightning:type": "lightning__objectType",
+                        "properties": {
+                            "name": {
+                                "title": "Name",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "stageName": {
+                                "title": "Stage",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "stageVariant": {
+                                "title": "Stage Variant",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "amountDisplay": {
+                                "title": "Amount",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "closeDisplay": {
+                                "title": "Close Date",
+                                "lightning:type": "lightning__textType"
+                            }
+                        }
+                    }
+                },
+                "contact1Name": {
+                    "title": "Contact 1 Name",
+                    "lightning:type": "lightning__textType"
+                },
+                "contact1Title": {
+                    "title": "Contact 1 Title",
+                    "lightning:type": "lightning__textType"
+                },
+                "contact1Initials": {
+                    "title": "Contact 1 Initials",
+                    "lightning:type": "lightning__textType"
+                },
+                "contact1LastTouch": {
+                    "title": "Contact 1 Last Touch",
+                    "lightning:type": "lightning__textType"
+                },
+                "contact2Name": {
+                    "title": "Contact 2 Name",
+                    "lightning:type": "lightning__textType"
+                },
+                "contact2Title": {
+                    "title": "Contact 2 Title",
+                    "lightning:type": "lightning__textType"
+                },
+                "contact2Initials": {
+                    "title": "Contact 2 Initials",
+                    "lightning:type": "lightning__textType"
+                },
+                "contact2LastTouch": {
+                    "title": "Contact 2 Last Touch",
+                    "lightning:type": "lightning__textType"
+                },
+                "contact3Name": {
+                    "title": "Contact 3 Name",
+                    "lightning:type": "lightning__textType"
+                },
+                "contact3Title": {
+                    "title": "Contact 3 Title",
+                    "lightning:type": "lightning__textType"
+                },
+                "contact3Initials": {
+                    "title": "Contact 3 Initials",
+                    "lightning:type": "lightning__textType"
+                },
+                "contact3LastTouch": {
+                    "title": "Contact 3 Last Touch",
+                    "lightning:type": "lightning__textType"
+                },
+                "opp1Name": {
+                    "title": "Opp 1 Name",
+                    "lightning:type": "lightning__textType"
+                },
+                "opp1StageName": {
+                    "title": "Opp 1 Stage",
+                    "lightning:type": "lightning__textType"
+                },
+                "opp1StageVariant": {
+                    "title": "Opp 1 Stage Variant",
+                    "lightning:type": "lightning__textType"
+                },
+                "opp1AmountDisplay": {
+                    "title": "Opp 1 Amount",
+                    "lightning:type": "lightning__textType"
+                },
+                "opp1CloseDisplay": {
+                    "title": "Opp 1 Close Date",
+                    "lightning:type": "lightning__textType"
+                },
+                "opp2Name": {
+                    "title": "Opp 2 Name",
+                    "lightning:type": "lightning__textType"
+                },
+                "opp2StageName": {
+                    "title": "Opp 2 Stage",
+                    "lightning:type": "lightning__textType"
+                },
+                "opp2StageVariant": {
+                    "title": "Opp 2 Stage Variant",
+                    "lightning:type": "lightning__textType"
+                },
+                "opp2AmountDisplay": {
+                    "title": "Opp 2 Amount",
+                    "lightning:type": "lightning__textType"
+                },
+                "opp2CloseDisplay": {
+                    "title": "Opp 2 Close Date",
+                    "lightning:type": "lightning__textType"
+                },
+                "opp3Name": {
+                    "title": "Opp 3 Name",
+                    "lightning:type": "lightning__textType"
+                },
+                "opp3StageName": {
+                    "title": "Opp 3 Stage",
+                    "lightning:type": "lightning__textType"
+                },
+                "opp3StageVariant": {
+                    "title": "Opp 3 Stage Variant",
+                    "lightning:type": "lightning__textType"
+                },
+                "opp3AmountDisplay": {
+                    "title": "Opp 3 Amount",
+                    "lightning:type": "lightning__textType"
+                },
+                "opp3CloseDisplay": {
+                    "title": "Opp 3 Close Date",
+                    "lightning:type": "lightning__textType"
+                },
+                "isPersonAccount": {
+                    "title": "Is Person Account",
+                    "lightning:type": "lightning__booleanType"
+                },
+                "isBusinessAccount": {
+                    "title": "Is Business Account",
+                    "lightning:type": "lightning__booleanType"
+                },
+                "personTilesTitle": {
+                    "title": "Person Tiles Title",
+                    "lightning:type": "lightning__textType"
+                },
+                "hasPersonTiles": {
+                    "title": "Has Person Tiles",
+                    "lightning:type": "lightning__booleanType"
+                },
+                "personTiles": {
+                    "title": "Person Tiles",
+                    "description": "Admin-configured insight tiles (HXL_Widget_Field__mdt Tile rows)",
+                    "type": "array",
+                    "items": {
+                        "lightning:type": "lightning__objectType",
+                        "properties": {
+                            "label": {
+                                "title": "Label",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "valueDisplay": {
+                                "title": "Value",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "showsText": {
+                                "title": "Shows Text",
+                                "lightning:type": "lightning__booleanType"
+                            },
+                            "isBadge": {
+                                "title": "Is Badge",
+                                "lightning:type": "lightning__booleanType"
+                            },
+                            "badgeVariant": {
+                                "title": "Badge Variant",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "isGauge": {
+                                "title": "Is Gauge",
+                                "lightning:type": "lightning__booleanType"
+                            },
+                            "gaugeValue": {
+                                "title": "Gauge Value",
+                                "description": "Numeric 0-100",
+                                "lightning:type": "lightning__numberType"
+                            },
+                            "gaugeVariant": {
+                                "title": "Gauge Variant",
+                                "lightning:type": "lightning__textType"
+                            }
+                        }
+                    }
+                },
+                "hasBuiltInSummary": {
+                    "title": "Has Built-in Summary",
+                    "description": "Business Account KPI strip (ARR, pipeline, health, renewal); off once Summary rows are configured",
+                    "lightning:type": "lightning__booleanType"
+                },
+                "hasSummary": {
+                    "title": "Has Summary",
+                    "lightning:type": "lightning__booleanType"
+                },
+                "summaryTiles": {
+                    "title": "Summary Tiles",
+                    "description": "Admin-configured KPI strip (HXL_Widget_Field__mdt Summary rows, up to 4)",
+                    "type": "array",
+                    "items": {
+                        "lightning:type": "lightning__objectType",
+                        "properties": {
+                            "label": {
+                                "title": "Label",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "valueDisplay": {
+                                "title": "Value",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "showsText": {
+                                "title": "Shows Text",
+                                "lightning:type": "lightning__booleanType"
+                            },
+                            "isBadge": {
+                                "title": "Is Badge",
+                                "lightning:type": "lightning__booleanType"
+                            },
+                            "badgeVariant": {
+                                "title": "Badge Variant",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "isGauge": {
+                                "title": "Is Gauge",
+                                "lightning:type": "lightning__booleanType"
+                            },
+                            "gaugeValue": {
+                                "title": "Gauge Value",
+                                "description": "Numeric 0-100",
+                                "lightning:type": "lightning__numberType"
+                            },
+                            "gaugeVariant": {
+                                "title": "Gauge Variant",
+                                "lightning:type": "lightning__textType"
+                            }
+                        }
+                    }
+                },
+                "hasPersonDetails": {
+                    "title": "Has Person Details",
+                    "lightning:type": "lightning__booleanType"
+                },
+                "personDetails": {
+                    "title": "Person Details",
+                    "description": "Admin-configured grouped detail rows (Detail rows)",
+                    "type": "array",
+                    "items": {
+                        "lightning:type": "lightning__objectType",
+                        "properties": {
+                            "label": {
+                                "title": "Label",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "valueDisplay": {
+                                "title": "Value",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "groupTitle": {
+                                "title": "Group Title",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "isGroupStart": {
+                                "title": "Is Group Start",
+                                "lightning:type": "lightning__booleanType"
+                            }
+                        }
+                    }
+                },
+                "hasDevices": {
+                    "title": "Has Devices",
+                    "lightning:type": "lightning__booleanType"
+                },
+                "hasEmployees": {
+                    "title": "Has Employees",
+                    "lightning:type": "lightning__booleanType"
+                },
+                "hasArrDelta": {
+                    "title": "Has ARR Delta",
+                    "lightning:type": "lightning__booleanType"
+                },
+                "devicesSummary": {
+                    "title": "Devices Summary",
+                    "lightning:type": "lightning__textType"
+                },
+                "devices": {
+                    "title": "Devices",
+                    "description": "The customer's Assets (Device* rows)",
+                    "type": "array",
+                    "items": {
+                        "lightning:type": "lightning__objectType",
+                        "properties": {
+                            "title": {
+                                "title": "Title",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "subtitle": {
+                                "title": "Subtitle",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "imageUrl": {
+                                "title": "Image URL",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "hasImage": {
+                                "title": "Has Image",
+                                "lightning:type": "lightning__booleanType"
+                            },
+                            "salesforceUrl": {
+                                "title": "Salesforce URL",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "detail1Label": {
+                                "title": "detail1Label",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "detail1Value": {
+                                "title": "detail1Value",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "hasDetail1": {
+                                "title": "hasDetail1",
+                                "lightning:type": "lightning__booleanType"
+                            },
+                            "detail2Label": {
+                                "title": "detail2Label",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "detail2Value": {
+                                "title": "detail2Value",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "hasDetail2": {
+                                "title": "hasDetail2",
+                                "lightning:type": "lightning__booleanType"
+                            },
+                            "detail3Label": {
+                                "title": "detail3Label",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "detail3Value": {
+                                "title": "detail3Value",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "hasDetail3": {
+                                "title": "hasDetail3",
+                                "lightning:type": "lightning__booleanType"
+                            },
+                            "detail4Label": {
+                                "title": "detail4Label",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "detail4Value": {
+                                "title": "detail4Value",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "hasDetail4": {
+                                "title": "hasDetail4",
+                                "lightning:type": "lightning__booleanType"
+                            }
+                        }
+                    }
+                },
+                "openPipelineAmount": {
+                    "title": "Open Pipeline Amount",
+                    "lightning:type": "lightning__textType"
+                },
+                "hasList1": {
+                    "title": "Has List 1",
+                    "lightning:type": "lightning__booleanType"
+                },
+                "list1IsCard": {
+                    "title": "List 1 Is Card",
+                    "lightning:type": "lightning__booleanType"
+                },
+                "list1IsTable": {
+                    "title": "List 1 Is Table",
+                    "lightning:type": "lightning__booleanType"
+                },
+                "list1IsEmpty": {
+                    "title": "List 1 Is Empty",
+                    "lightning:type": "lightning__booleanType"
+                },
+                "list1Title": {
+                    "title": "List 1 Title",
+                    "lightning:type": "lightning__textType"
+                },
+                "list1Icon": {
+                    "title": "List 1 Icon",
+                    "lightning:type": "lightning__textType"
+                },
+                "list1Summary": {
+                    "title": "List 1 Summary",
+                    "lightning:type": "lightning__textType"
+                },
+                "list1EmptyText": {
+                    "title": "List 1 Empty Text",
+                    "lightning:type": "lightning__textType"
+                },
+                "list1Rows": {
+                    "title": "List 1 Rows",
+                    "description": "Card-list rows (HXL Related List, slot 1)",
+                    "type": "array",
+                    "items": {
+                        "lightning:type": "lightning__objectType",
+                        "properties": {
+                            "title": {
+                                "title": "Title",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "salesforceUrl": {
+                                "title": "Salesforce URL",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "subtitle": {
+                                "title": "Subtitle",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "hasSubtitle": {
+                                "title": "Has Subtitle",
+                                "lightning:type": "lightning__booleanType"
+                            },
+                            "badgeLabel": {
+                                "title": "Badge Label",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "badgeVariant": {
+                                "title": "Badge Variant",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "hasBadge": {
+                                "title": "Has Badge",
+                                "lightning:type": "lightning__booleanType"
+                            },
+                            "imageUrl": {
+                                "title": "Image URL",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "hasImage": {
+                                "title": "Has Image",
+                                "lightning:type": "lightning__booleanType"
+                            },
+                            "iconName": {
+                                "title": "Icon Name",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "hasIcon": {
+                                "title": "Has Icon",
+                                "lightning:type": "lightning__booleanType"
+                            },
+                            "detail1Label": {
+                                "title": "detail1Label",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "detail1Value": {
+                                "title": "detail1Value",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "hasDetail1": {
+                                "title": "hasDetail1",
+                                "lightning:type": "lightning__booleanType"
+                            },
+                            "detail2Label": {
+                                "title": "detail2Label",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "detail2Value": {
+                                "title": "detail2Value",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "hasDetail2": {
+                                "title": "hasDetail2",
+                                "lightning:type": "lightning__booleanType"
+                            },
+                            "detail3Label": {
+                                "title": "detail3Label",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "detail3Value": {
+                                "title": "detail3Value",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "hasDetail3": {
+                                "title": "hasDetail3",
+                                "lightning:type": "lightning__booleanType"
+                            },
+                            "detail4Label": {
+                                "title": "detail4Label",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "detail4Value": {
+                                "title": "detail4Value",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "hasDetail4": {
+                                "title": "hasDetail4",
+                                "lightning:type": "lightning__booleanType"
+                            }
+                        }
+                    }
+                },
+                "list1Columns": {
+                    "title": "List 1 Columns",
+                    "description": "Table columns: key is the c1..c5 cell",
+                    "type": "array",
+                    "items": {
+                        "lightning:type": "lightning__objectType",
+                        "properties": {
+                            "key": {
+                                "title": "Key",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "header": {
+                                "title": "Header",
+                                "lightning:type": "lightning__textType"
+                            }
+                        }
+                    }
+                },
+                "list1TableRows": {
+                    "title": "List 1 Table Rows",
+                    "type": "array",
+                    "items": {
+                        "lightning:type": "lightning__objectType",
+                        "properties": {
+                            "c1": {
+                                "title": "Cell 1",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "c2": {
+                                "title": "Cell 2",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "c3": {
+                                "title": "Cell 3",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "c4": {
+                                "title": "Cell 4",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "c5": {
+                                "title": "Cell 5",
+                                "lightning:type": "lightning__textType"
+                            }
+                        }
+                    }
+                },
+                "hasList2": {
+                    "title": "Has List 2",
+                    "lightning:type": "lightning__booleanType"
+                },
+                "list2IsCard": {
+                    "title": "List 2 Is Card",
+                    "lightning:type": "lightning__booleanType"
+                },
+                "list2IsTable": {
+                    "title": "List 2 Is Table",
+                    "lightning:type": "lightning__booleanType"
+                },
+                "list2IsEmpty": {
+                    "title": "List 2 Is Empty",
+                    "lightning:type": "lightning__booleanType"
+                },
+                "list2Title": {
+                    "title": "List 2 Title",
+                    "lightning:type": "lightning__textType"
+                },
+                "list2Icon": {
+                    "title": "List 2 Icon",
+                    "lightning:type": "lightning__textType"
+                },
+                "list2Summary": {
+                    "title": "List 2 Summary",
+                    "lightning:type": "lightning__textType"
+                },
+                "list2EmptyText": {
+                    "title": "List 2 Empty Text",
+                    "lightning:type": "lightning__textType"
+                },
+                "list2Rows": {
+                    "title": "List 2 Rows",
+                    "description": "Card-list rows (HXL Related List, slot 2)",
+                    "type": "array",
+                    "items": {
+                        "lightning:type": "lightning__objectType",
+                        "properties": {
+                            "title": {
+                                "title": "Title",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "salesforceUrl": {
+                                "title": "Salesforce URL",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "subtitle": {
+                                "title": "Subtitle",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "hasSubtitle": {
+                                "title": "Has Subtitle",
+                                "lightning:type": "lightning__booleanType"
+                            },
+                            "badgeLabel": {
+                                "title": "Badge Label",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "badgeVariant": {
+                                "title": "Badge Variant",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "hasBadge": {
+                                "title": "Has Badge",
+                                "lightning:type": "lightning__booleanType"
+                            },
+                            "imageUrl": {
+                                "title": "Image URL",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "hasImage": {
+                                "title": "Has Image",
+                                "lightning:type": "lightning__booleanType"
+                            },
+                            "iconName": {
+                                "title": "Icon Name",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "hasIcon": {
+                                "title": "Has Icon",
+                                "lightning:type": "lightning__booleanType"
+                            },
+                            "detail1Label": {
+                                "title": "detail1Label",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "detail1Value": {
+                                "title": "detail1Value",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "hasDetail1": {
+                                "title": "hasDetail1",
+                                "lightning:type": "lightning__booleanType"
+                            },
+                            "detail2Label": {
+                                "title": "detail2Label",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "detail2Value": {
+                                "title": "detail2Value",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "hasDetail2": {
+                                "title": "hasDetail2",
+                                "lightning:type": "lightning__booleanType"
+                            },
+                            "detail3Label": {
+                                "title": "detail3Label",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "detail3Value": {
+                                "title": "detail3Value",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "hasDetail3": {
+                                "title": "hasDetail3",
+                                "lightning:type": "lightning__booleanType"
+                            },
+                            "detail4Label": {
+                                "title": "detail4Label",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "detail4Value": {
+                                "title": "detail4Value",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "hasDetail4": {
+                                "title": "hasDetail4",
+                                "lightning:type": "lightning__booleanType"
+                            }
+                        }
+                    }
+                },
+                "list2Columns": {
+                    "title": "List 2 Columns",
+                    "description": "Table columns: key is the c1..c5 cell",
+                    "type": "array",
+                    "items": {
+                        "lightning:type": "lightning__objectType",
+                        "properties": {
+                            "key": {
+                                "title": "Key",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "header": {
+                                "title": "Header",
+                                "lightning:type": "lightning__textType"
+                            }
+                        }
+                    }
+                },
+                "list2TableRows": {
+                    "title": "List 2 Table Rows",
+                    "type": "array",
+                    "items": {
+                        "lightning:type": "lightning__objectType",
+                        "properties": {
+                            "c1": {
+                                "title": "Cell 1",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "c2": {
+                                "title": "Cell 2",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "c3": {
+                                "title": "Cell 3",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "c4": {
+                                "title": "Cell 4",
+                                "lightning:type": "lightning__textType"
+                            },
+                            "c5": {
+                                "title": "Cell 5",
+                                "lightning:type": "lightning__textType"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+  "title" : "Asset Detail MCP Output Values",
+  "description" : "Payload fields from the de_HXL_GetAssetDetail MCP tool response",
+  "lightning:type" : "lightning__objectType",
+  "unevaluatedProperties" : false,
+  "lightning:tags" : [ "mcp" ],
+  "properties" : {
+    "detail" : {
+      "title" : "Asset Detail",
+      "lightning:type" : "@apexClassType/c__de_HXL_GetAssetDetail$Result"
+    }
+  }
+}

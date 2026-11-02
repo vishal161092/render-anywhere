@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UiWidgetBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Case Detail</masterLabel>
+    <description>Case with priority, status, SLA timer, account/contact/owner, description, and related KB articles.</description>
+    <widgetType>JSON</widgetType>
+</UiWidgetBundle>

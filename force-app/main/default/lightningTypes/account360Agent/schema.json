@@ -1,0 +1,5 @@
+{
+    "title": "Account 360 Snapshot (Agentforce)",
+    "description": "Agentforce Output Rendering for the Account 360 Snapshot widget. Typed at de_HXL_GetAccount360$Result so it binds flat ($attrs.<field>). MCP counterpart: account360McpResult.",
+    "lightning:type": "@apexClassType/c__de_HXL_GetAccount360$Result"
+}

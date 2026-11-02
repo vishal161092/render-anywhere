@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Returns a Case detail view (priority, status, SLA timer, account, contact, owner, description, related knowledge articles) rendered as the Case Detail HXL widget. Accepts a Case number (e.g. "00001025"), a case subject, OR a 15/18-char Case Id in caseRef; it resolves numbers and subjects on its own, so pass whatever the user said and do not ask the user for an Id first.</description>
+    <developerName>HXL_Get_Case_Detail</developerName>
+    <invocationTarget>de_HXL_GetCaseDetail</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+    <localDeveloperName>HXL_Get_Case_Detail</localDeveloperName>
+    <masterLabel>HXL Get Case Detail</masterLabel>
+</GenAiFunction>

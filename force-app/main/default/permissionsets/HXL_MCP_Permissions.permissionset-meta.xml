@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Permissions required for the HXL MCP server integration.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>HXL MCP Permissions</label>
+    <classAccesses>
+        <apexClass>de_HXL_Format</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>de_HXL_GetAccount360</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>de_HXL_GetAssetDetail</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>de_HXL_GetCaseDetail</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>de_HXL_GetContactQuickView</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>de_HXL_GetOpportunityPipeline</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>de_HXL_Resolve</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>de_HXL_Search</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <tabSettings>
+        <tab>HXL_MCP_Setup_Guide</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+</PermissionSet>

@@ -1,0 +1,13 @@
+{
+    "unevaluatedProperties": false,
+    "properties": {
+        "userRef": {
+            "title": "User (name, optional)",
+            "description": "A User full name (e.g. \"Alex Morgan\"). Leave blank to use the logged-in user's own pipeline.",
+            "lightning:type": "lightning__textType",
+            "lightning:isPII": false,
+            "copilotAction:isUserInput": true
+        }
+    },
+    "lightning:type": "lightning__objectType"
+}

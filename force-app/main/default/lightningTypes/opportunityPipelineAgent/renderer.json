@@ -1,0 +1,23 @@
+{
+    "renderer": {
+        "componentOverrides": {
+            "$": {
+                "definition": "@widget/c/opportunityPipeline",
+                "attributes": {
+                    "userName": "{!$attrs.userName}",
+                    "userInitials": "{!$attrs.userInitials}",
+                    "userTitle": "{!$attrs.userTitle}",
+                    "headerSubtitle": "{!$attrs.headerSubtitle}",
+                    "salesforceUrl": "{!$attrs.salesforceUrl}",
+                    "openAmountDisplay": "{!$attrs.openAmountDisplay}",
+                    "weightedForecastDisplay": "{!$attrs.weightedForecastDisplay}",
+                    "quotaDisplay": "{!$attrs.quotaDisplay}",
+                    "quotaAttainmentDisplay": "{!$attrs.quotaAttainmentDisplay}",
+                    "quotaAttainmentPct": "{!$attrs.quotaAttainmentPct}",
+                    "quotaAttainmentColor": "{!$attrs.quotaAttainmentColor}",
+                    "opportunities": "{!$attrs.opportunities}"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,12 @@
+<template>
+    <lightning-tabset active-tab-value="setup">
+        <lightning-tab label="Setup Guide" value="setup">
+            <c-de_hxl-mcp-setup-guide></c-de_hxl-mcp-setup-guide>
+        </lightning-tab>
+        <template lwc:if={canEditFields}>
+            <lightning-tab label="Widget Field Settings" value="fields">
+                <c-de_hxl-widget-field-editor></c-de_hxl-widget-field-editor>
+            </lightning-tab>
+        </template>
+    </lightning-tabset>
+</template>

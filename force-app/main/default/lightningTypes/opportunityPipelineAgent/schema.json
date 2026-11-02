@@ -1,0 +1,5 @@
+{
+    "title": "Opportunity Pipeline (Agentforce)",
+    "description": "Agentforce Output Rendering for the Opportunity Pipeline widget. Typed at de_HXL_GetOpportunityPipeline$Result so it binds flat ($attrs.<field>). MCP counterpart: opportunityPipelineMcpResult.",
+    "lightning:type": "@apexClassType/c__de_HXL_GetOpportunityPipeline$Result"
+}

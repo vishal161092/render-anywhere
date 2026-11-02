@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Widget Field Settings editor: choose which fields the HXL widgets show (saves HXL Widget Field custom metadata). Give to admins or demo owners only.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>HXL Widget Field Editor</label>
+    <classAccesses>
+        <apexClass>de_HXL_WidgetFieldEditor</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>HXL_Widget_Field_Editor</name>
+    </customPermissions>
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>HXL_Widget_Field_Deploy__e</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <tabSettings>
+        <tab>HXL_MCP_Setup_Guide</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+</PermissionSet>

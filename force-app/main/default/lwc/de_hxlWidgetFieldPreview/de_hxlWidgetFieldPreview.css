@@ -1,0 +1,255 @@
+/* Approximates the HXL tile/* primitives (SLDS 2 tokens with fallbacks). */
+:host {
+    display: block;
+}
+
+.widget {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+    border: 1px solid var(--slds-g-color-border-1, #e5e5e5);
+    border-radius: 0.75rem;
+    background: var(--slds-g-color-surface-container-1, #fff);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.row_between {
+    justify-content: space-between;
+}
+
+.row_wrap {
+    flex-wrap: wrap;
+}
+
+.row_stretch {
+    align-items: stretch;
+}
+
+.row_start {
+    align-items: flex-start;
+}
+
+.row_md {
+    gap: 0.75rem;
+}
+
+.row_lg {
+    gap: 1.5rem;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 0;
+}
+
+.column_sm {
+    gap: 0.5rem;
+}
+
+.container {
+    padding: 0.75rem;
+    border: 1px solid var(--slds-g-color-border-1, #e5e5e5);
+    border-radius: 0.5rem;
+}
+
+.container_emphasis {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    flex: 0 1 8rem;
+    padding: 1rem;
+    border-radius: 0.75rem;
+}
+
+/* KPI strip tiles share the row evenly, like tile/column width="stretch". */
+.container_stretch {
+    flex: 1 1 0;
+}
+
+.rich {
+    display: block;
+}
+
+.text {
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: var(--slds-g-color-on-surface-3, #181818);
+    overflow-wrap: anywhere;
+}
+
+.text_h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.text_h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.text_h4 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.text_caption {
+    font-size: 0.75rem;
+    color: var(--slds-g-color-on-surface-1, #5c5c5c);
+}
+
+.text_strong {
+    font-weight: 600;
+}
+
+.value {
+    text-align: right;
+}
+
+.group {
+    margin-top: 0.5rem;
+}
+
+.badge {
+    padding: 0.125rem 0.5rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--slds-g-color-on-surface-3, #181818);
+    background: var(--slds-g-color-surface-container-2, #f3f3f3);
+}
+
+.link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--slds-g-color-accent-1, #0176d3);
+}
+
+.avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    font-size: 0.6875rem;
+    color: var(--slds-g-color-on-surface-3, #181818);
+}
+
+.separator {
+    margin: 0;
+    border: none;
+    border-top: 1px solid var(--slds-g-color-border-1, #e5e5e5);
+}
+
+.image {
+    width: 3rem;
+    height: 3rem;
+    object-fit: contain;
+    border-radius: 0.25rem;
+    flex: none;
+}
+
+.badge_success {
+    color: #056764;
+    background: #acf3e4;
+}
+
+.badge_warning {
+    color: #8c4b02;
+    background: #fbe7a1;
+}
+
+.badge_error {
+    color: #b60554;
+    background: #fddde3;
+}
+
+.badge_info,
+.badge_primary {
+    color: #014486;
+    background: #d8e6fe;
+}
+
+.badge_outline {
+    background: transparent;
+    border: 1px solid var(--slds-g-color-border-1, #c9c9c9);
+}
+
+.icon {
+    font-size: 0.6875rem;
+    color: var(--slds-g-color-on-surface-1, #747474);
+}
+
+.row-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    flex: none;
+    font-weight: 700;
+    color: var(--slds-g-color-accent-1, #0176d3);
+    background: var(--slds-g-color-surface-container-2, #f3f3f3);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.75rem;
+}
+
+.table th {
+    text-align: left;
+    font-weight: 600;
+    color: var(--slds-g-color-on-surface-1, #747474);
+}
+
+.table th,
+.table td {
+    padding: 0.25rem 0.375rem;
+    border-bottom: 1px solid var(--slds-g-color-border-1, #e5e5e5);
+}
+
+.table tbody tr:nth-child(odd) td {
+    background: var(--slds-g-color-surface-container-2, #f8f8f8);
+}
+
+/* A Badge tile's pill keeps its own width inside the tile column. */
+.container_emphasis > .badge {
+    align-self: flex-start;
+}
+
+/* Gauge tiles: tile/progress size="sm", coloured like the health score. */
+.progress {
+    height: 0.375rem;
+    border-radius: 0.1875rem;
+    background: var(--slds-g-color-surface-container-3, #e5e5e5);
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    border-radius: inherit;
+}
+
+.progress-bar_success {
+    background: #2e844a;
+}
+
+.progress-bar_warning {
+    background: #dd7a01;
+}
+
+.progress-bar_error {
+    background: #ba0517;
+}

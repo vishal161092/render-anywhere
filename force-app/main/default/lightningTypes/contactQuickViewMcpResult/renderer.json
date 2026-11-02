@@ -1,0 +1,24 @@
+{
+  "renderer": {
+    "componentOverrides": {
+      "$": {
+        "definition": "@widget/c/contactQuickView",
+        "attributes": {
+          "name": "{!$attrs.outputValues.view.name}",
+          "initials": "{!$attrs.outputValues.view.initials}",
+          "title": "{!$attrs.outputValues.view.title}",
+          "accountName": "{!$attrs.outputValues.view.accountName}",
+          "accountUrl": "{!$attrs.outputValues.view.accountUrl}",
+          "email": "{!$attrs.outputValues.view.email}",
+          "emailHref": "{!$attrs.outputValues.view.emailHref}",
+          "phone": "{!$attrs.outputValues.view.phone}",
+          "phoneHref": "{!$attrs.outputValues.view.phoneHref}",
+          "salesforceUrl": "{!$attrs.outputValues.view.salesforceUrl}",
+          "recentActivities": "{!$attrs.outputValues.view.recentActivities}",
+          "hasDetails": "{!$attrs.outputValues.view.hasDetails}",
+          "details": "{!$attrs.outputValues.view.details}"
+        }
+      }
+    }
+  }
+}

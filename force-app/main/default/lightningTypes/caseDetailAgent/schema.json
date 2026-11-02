@@ -1,0 +1,5 @@
+{
+    "title": "Case Detail (Agentforce)",
+    "description": "Agentforce Output Rendering for the Case Detail widget. Typed at de_HXL_GetCaseDetail$Result so it binds flat ($attrs.<field>). MCP counterpart: caseDetailMcpResult.",
+    "lightning:type": "@apexClassType/c__de_HXL_GetCaseDetail$Result"
+}

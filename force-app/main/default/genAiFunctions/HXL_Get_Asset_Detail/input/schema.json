@@ -1,0 +1,14 @@
+{
+    "unevaluatedProperties": false,
+    "properties": {
+        "assetRef": {
+            "title": "Asset (name, serial number, or Id)",
+            "description": "An Asset name, a serial number, or a 15/18-char Asset Id. Pass whatever the user said; the action resolves it on its own.",
+            "lightning:type": "lightning__textType",
+            "lightning:isPII": false,
+            "copilotAction:isUserInput": true
+        }
+    },
+    "required": ["assetRef"],
+    "lightning:type": "lightning__objectType"
+}

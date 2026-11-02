@@ -1,0 +1,300 @@
+{
+  "type": "lightning__agentforceWidget",
+  "title": "Opportunity Pipeline",
+  "contentBody": {
+    "widgetBody": {
+      "definition": "tile/widget",
+      "children": [
+        {
+          "definition": "tile/container",
+          "children": [
+            {
+              "definition": "tile/column",
+              "attributes": {
+                "gap": "lg"
+              },
+              "children": [
+                {
+                  "definition": "tile/row",
+                  "attributes": {
+                    "gap": "md",
+                    "align": "center",
+                    "justify": "between",
+                    "isWrapped": true
+                  },
+                  "children": [
+                    {
+                      "definition": "tile/row",
+                      "attributes": {
+                        "gap": "md",
+                        "align": "center"
+                      },
+                      "children": [
+                        {
+                          "definition": "tile/avatar",
+                          "attributes": {
+                            "initials": "{!$attrs.userInitials}",
+                            "alt": "{!$attrs.userName}",
+                            "size": "lg",
+                            "shape": "circle"
+                          }
+                        },
+                        {
+                          "definition": "tile/column",
+                          "attributes": {
+                            "gap": "xs"
+                          },
+                          "children": [
+                            {
+                              "definition": "tile/text",
+                              "attributes": {
+                                "text": "{!$attrs.userName}",
+                                "variant": "h2",
+                                "weight": "semibold"
+                              }
+                            },
+                            {
+                              "definition": "tile/text",
+                              "attributes": {
+                                "text": "{!$attrs.userTitle}",
+                                "variant": "body",
+                                "color": "muted"
+                              }
+                            },
+                            {
+                              "definition": "tile/text",
+                              "attributes": {
+                                "text": "{!$attrs.headerSubtitle}",
+                                "variant": "caption",
+                                "color": "muted"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "definition": "tile/link",
+                      "attributes": {
+                        "text": "Open in Salesforce",
+                        "href": "{!$attrs.salesforceUrl}",
+                        "variant": "primary"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "definition": "tile/separator"
+                },
+                {
+                  "definition": "tile/row",
+                  "attributes": {
+                    "gap": "lg",
+                    "justify": "between",
+                    "align": "stretch",
+                    "isWrapped": true
+                  },
+                  "children": [
+                    {
+                      "definition": "tile/column",
+                      "attributes": {
+                        "gap": "xs"
+                      },
+                      "children": [
+                        {
+                          "definition": "tile/text",
+                          "attributes": {
+                            "text": "Open pipeline",
+                            "variant": "caption",
+                            "color": "muted"
+                          }
+                        },
+                        {
+                          "definition": "tile/text",
+                          "attributes": {
+                            "text": "{!$attrs.openAmountDisplay}",
+                            "variant": "h3",
+                            "weight": "semibold"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "definition": "tile/column",
+                      "attributes": {
+                        "gap": "xs"
+                      },
+                      "children": [
+                        {
+                          "definition": "tile/text",
+                          "attributes": {
+                            "text": "Weighted forecast",
+                            "variant": "caption",
+                            "color": "muted"
+                          }
+                        },
+                        {
+                          "definition": "tile/text",
+                          "attributes": {
+                            "text": "{!$attrs.weightedForecastDisplay}",
+                            "variant": "h3",
+                            "weight": "semibold"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "definition": "tile/column",
+                      "attributes": {
+                        "gap": "xs"
+                      },
+                      "children": [
+                        {
+                          "definition": "tile/text",
+                          "attributes": {
+                            "text": "Quota (this quarter)",
+                            "variant": "caption",
+                            "color": "muted"
+                          }
+                        },
+                        {
+                          "definition": "tile/text",
+                          "attributes": {
+                            "text": "{!$attrs.quotaDisplay}",
+                            "variant": "h3",
+                            "weight": "semibold"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "definition": "tile/column",
+                  "attributes": {
+                    "gap": "xs"
+                  },
+                  "children": [
+                    {
+                      "definition": "tile/progress",
+                      "attributes": {
+                        "label": "{!$attrs.quotaAttainmentDisplay}",
+                        "value": "{!$attrs.quotaAttainmentPct}",
+                        "max": 100,
+                        "color": "{!$attrs.quotaAttainmentColor}",
+                        "size": "md"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "definition": "tile/separator"
+                },
+                {
+                  "definition": "tile/column",
+                  "attributes": {
+                    "gap": "sm"
+                  },
+                  "children": [
+                    {
+                      "definition": "tile/text",
+                      "attributes": {
+                        "text": "Open opportunities",
+                        "variant": "h4",
+                        "weight": "semibold"
+                      }
+                    },
+                    {
+                      "definition": "tile/row",
+                      "attributes": {
+                        "gap": "sm",
+                        "align": "center",
+                        "justify": "between"
+                      },
+                      "meta": {
+                        "forEach": "{!$attrs.opportunities}",
+                        "forItem": "$opp"
+                      },
+                      "children": [
+                        {
+                          "definition": "tile/column",
+                          "attributes": {
+                            "gap": "xs"
+                          },
+                          "children": [
+                            {
+                              "definition": "tile/text",
+                              "attributes": {
+                                "text": "{!$opp.name}",
+                                "variant": "body",
+                                "weight": "semibold"
+                              }
+                            },
+                            {
+                              "definition": "tile/row",
+                              "attributes": {
+                                "gap": "sm",
+                                "align": "center"
+                              },
+                              "children": [
+                                {
+                                  "definition": "tile/badge",
+                                  "attributes": {
+                                    "label": "{!$opp.stageName}",
+                                    "variant": "{!$opp.stageVariant}"
+                                  }
+                                },
+                                {
+                                  "definition": "tile/text",
+                                  "attributes": {
+                                    "text": "{!$opp.closeDisplay}",
+                                    "variant": "caption",
+                                    "color": "muted"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "definition": "tile/text",
+                              "attributes": {
+                                "text": "{!$opp.detail1Label}: {!$opp.detail1Value}",
+                                "variant": "caption",
+                                "color": "muted"
+                              },
+                              "meta": {
+                                "if": "{!$opp.hasDetail1}"
+                              }
+                            },
+                            {
+                              "definition": "tile/text",
+                              "attributes": {
+                                "text": "{!$opp.detail2Label}: {!$opp.detail2Value}",
+                                "variant": "caption",
+                                "color": "muted"
+                              },
+                              "meta": {
+                                "if": "{!$opp.hasDetail2}"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "definition": "tile/text",
+                          "attributes": {
+                            "text": "{!$opp.amountDisplay}",
+                            "variant": "body",
+                            "weight": "semibold"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Business 2: Open Opportunities</label>
+    <protected>false</protected>
+    <values>
+        <field>Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Filter_Field__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Filter_Value__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Filter__c</field>
+        <value xsi:type="xsd:string">Open</value>
+    </values>
+    <values>
+        <field>Icon__c</field>
+        <value xsi:type="xsd:string">target</value>
+    </values>
+    <values>
+        <field>Layout__c</field>
+        <value xsi:type="xsd:string">Table</value>
+    </values>
+    <values>
+        <field>Object__c</field>
+        <value xsi:type="xsd:string">Opportunity</value>
+    </values>
+    <values>
+        <field>Parent_Field__c</field>
+        <value xsi:type="xsd:string">AccountId</value>
+    </values>
+    <values>
+        <field>Provider_Class__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Row_Limit__c</field>
+        <value xsi:type="xsd:double">5.0</value>
+    </values>
+    <values>
+        <field>Slot__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+    <values>
+        <field>Sort_Descending__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Sort_Field__c</field>
+        <value xsi:type="xsd:string">Amount</value>
+    </values>
+    <values>
+        <field>Title__c</field>
+        <value xsi:type="xsd:string">Open Opportunities</value>
+    </values>
+    <values>
+        <field>Widget__c</field>
+        <value xsi:type="xsd:string">BusinessAccount360</value>
+    </values>
+</CustomMetadata>

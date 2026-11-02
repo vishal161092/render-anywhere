@@ -1,0 +1,5 @@
+{
+    "title": "Asset Detail (Agentforce)",
+    "description": "Agentforce Output Rendering for the Asset Detail widget. Typed at de_HXL_GetAssetDetail$Result so it binds flat ($attrs.<field>). MCP counterpart: assetDetailMcpResult.",
+    "lightning:type": "@apexClassType/c__de_HXL_GetAssetDetail$Result"
+}

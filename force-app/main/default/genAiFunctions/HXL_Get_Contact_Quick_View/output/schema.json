@@ -1,0 +1,15 @@
+{
+    "unevaluatedProperties": false,
+    "properties": {
+        "view": {
+            "title": "Contact Quick View",
+            "description": "Contact Quick View payload rendered by the contactQuickViewAgent Custom Lightning Type",
+            "lightning:type": "c__contactQuickViewAgent",
+            "lightning:isPII": false,
+            "copilotAction:isDisplayable": true,
+            "copilotAction:isUsedByPlanner": true,
+            "copilotAction:useHydratedPrompt": false
+        }
+    },
+    "lightning:type": "lightning__objectType"
+}

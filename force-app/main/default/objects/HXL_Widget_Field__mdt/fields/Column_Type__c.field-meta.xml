@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Column_Type__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>Related list columns: Link (title), Subtitle, Badge, Image, Icon, Text. Summary and Tile rows: Text, Badge, or Gauge (a 0-100 bar). Other types show as text.</inlineHelpText>
+    <label>Column Type</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Text</fullName>
+                <default>true</default>
+                <label>Text</label>
+            </value>
+            <value>
+                <fullName>Link</fullName>
+                <default>false</default>
+                <label>Link</label>
+            </value>
+            <value>
+                <fullName>Subtitle</fullName>
+                <default>false</default>
+                <label>Subtitle</label>
+            </value>
+            <value>
+                <fullName>Badge</fullName>
+                <default>false</default>
+                <label>Badge</label>
+            </value>
+            <value>
+                <fullName>Image</fullName>
+                <default>false</default>
+                <label>Image</label>
+            </value>
+            <value>
+                <fullName>Icon</fullName>
+                <default>false</default>
+                <label>Icon</label>
+            </value>
+            <value>
+                <fullName>Gauge</fullName>
+                <default>false</default>
+                <label>Gauge</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

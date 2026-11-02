@@ -1,0 +1,15 @@
+{
+    "unevaluatedProperties": false,
+    "properties": {
+        "detail": {
+            "title": "Case Detail",
+            "description": "Case Detail payload rendered by the caseDetailAgent Custom Lightning Type",
+            "lightning:type": "c__caseDetailAgent",
+            "lightning:isPII": false,
+            "copilotAction:isDisplayable": true,
+            "copilotAction:isUsedByPlanner": true,
+            "copilotAction:useHydratedPrompt": false
+        }
+    },
+    "lightning:type": "lightning__objectType"
+}

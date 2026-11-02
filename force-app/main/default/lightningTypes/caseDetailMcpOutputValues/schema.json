@@ -1,0 +1,13 @@
+{
+  "title" : "Case Detail MCP Output Values",
+  "description" : "Payload fields from the de_HXL_GetCaseDetail MCP tool response",
+  "lightning:type" : "lightning__objectType",
+  "unevaluatedProperties" : false,
+  "lightning:tags" : [ "mcp" ],
+  "properties" : {
+    "detail" : {
+      "title" : "Case Detail",
+      "lightning:type" : "@apexClassType/c__de_HXL_GetCaseDetail$Result"
+    }
+  }
+}

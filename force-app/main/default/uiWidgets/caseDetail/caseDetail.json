@@ -1,0 +1,553 @@
+{
+  "type": "lightning__agentforceWidget",
+  "title": "Case Detail",
+  "contentBody": {
+    "widgetBody": {
+      "definition": "tile/widget",
+      "children": [
+        {
+          "definition": "tile/container",
+          "children": [
+            {
+              "definition": "tile/column",
+              "attributes": {
+                "gap": "lg"
+              },
+              "children": [
+                {
+                  "definition": "tile/row",
+                  "attributes": {
+                    "gap": "md",
+                    "align": "center",
+                    "justify": "between",
+                    "isWrapped": true
+                  },
+                  "children": [
+                    {
+                      "definition": "tile/column",
+                      "attributes": {
+                        "gap": "xs"
+                      },
+                      "children": [
+                        {
+                          "definition": "tile/row",
+                          "attributes": {
+                            "gap": "sm",
+                            "align": "center",
+                            "isWrapped": true
+                          },
+                          "children": [
+                            {
+                              "definition": "tile/text",
+                              "attributes": {
+                                "text": "Case #",
+                                "variant": "h2",
+                                "weight": "semibold",
+                                "color": "muted"
+                              }
+                            },
+                            {
+                              "definition": "tile/text",
+                              "attributes": {
+                                "text": "{!$attrs.caseNumber}",
+                                "variant": "h2",
+                                "weight": "semibold"
+                              }
+                            },
+                            {
+                              "definition": "tile/badge",
+                              "attributes": {
+                                "label": "{!$attrs.priority}",
+                                "variant": "{!$attrs.priorityVariant}"
+                              }
+                            },
+                            {
+                              "definition": "tile/badge",
+                              "attributes": {
+                                "label": "{!$attrs.status}",
+                                "variant": "{!$attrs.statusVariant}"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "definition": "tile/text",
+                          "attributes": {
+                            "text": "{!$attrs.subject}",
+                            "variant": "body",
+                            "color": "muted"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "definition": "tile/link",
+                      "attributes": {
+                        "text": "Open in Salesforce",
+                        "href": "{!$attrs.salesforceUrl}",
+                        "variant": "primary"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "definition": "tile/column",
+                  "attributes": {
+                    "gap": "sm"
+                  },
+                  "children": [
+                    {
+                      "definition": "tile/row",
+                      "attributes": {
+                        "gap": "sm",
+                        "align": "center"
+                      },
+                      "children": [
+                        {
+                          "definition": "tile/text",
+                          "attributes": {
+                            "text": "{!$attrs.slaTitle}",
+                            "variant": "h4",
+                            "weight": "semibold"
+                          }
+                        },
+                        {
+                          "definition": "tile/badge",
+                          "attributes": {
+                            "label": "{!$attrs.slaStatus}",
+                            "variant": "{!$attrs.slaVariant}"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "definition": "tile/progress",
+                      "attributes": {
+                        "label": "{!$attrs.slaStatus}",
+                        "value": "{!$attrs.slaPercent}",
+                        "max": 100,
+                        "color": "{!$attrs.slaColor}",
+                        "size": "md"
+                      }
+                    },
+                    {
+                      "definition": "tile/row",
+                      "attributes": {
+                        "gap": "md",
+                        "justify": "between",
+                        "isWrapped": true
+                      },
+                      "children": [
+                        {
+                          "definition": "tile/row",
+                          "attributes": {
+                            "gap": "xs",
+                            "align": "center"
+                          },
+                          "children": [
+                            {
+                              "definition": "tile/text",
+                              "attributes": {
+                                "text": "Created",
+                                "variant": "caption",
+                                "color": "muted"
+                              }
+                            },
+                            {
+                              "definition": "tile/text",
+                              "attributes": {
+                                "text": "{!$attrs.createdDisplay}",
+                                "variant": "caption",
+                                "color": "muted"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "definition": "tile/row",
+                          "attributes": {
+                            "gap": "xs",
+                            "align": "center"
+                          },
+                          "children": [
+                            {
+                              "definition": "tile/text",
+                              "attributes": {
+                                "text": "Due",
+                                "variant": "caption",
+                                "color": "muted"
+                              }
+                            },
+                            {
+                              "definition": "tile/text",
+                              "attributes": {
+                                "text": "{!$attrs.slaDueDisplay}",
+                                "variant": "caption",
+                                "color": "muted"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "definition": "tile/separator"
+                },
+                {
+                  "definition": "tile/row",
+                  "attributes": {
+                    "gap": "lg",
+                    "align": "start",
+                    "justify": "between",
+                    "isWrapped": true
+                  },
+                  "children": [
+                    {
+                      "definition": "tile/column",
+                      "attributes": {
+                        "gap": "xs"
+                      },
+                      "children": [
+                        {
+                          "definition": "tile/text",
+                          "attributes": {
+                            "text": "Account",
+                            "variant": "caption",
+                            "color": "muted"
+                          }
+                        },
+                        {
+                          "definition": "tile/link",
+                          "attributes": {
+                            "text": "{!$attrs.accountName}",
+                            "href": "{!$attrs.accountUrl}",
+                            "variant": "primary"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "definition": "tile/column",
+                      "attributes": {
+                        "gap": "xs"
+                      },
+                      "children": [
+                        {
+                          "definition": "tile/text",
+                          "attributes": {
+                            "text": "Contact",
+                            "variant": "caption",
+                            "color": "muted"
+                          }
+                        },
+                        {
+                          "definition": "tile/row",
+                          "attributes": {
+                            "gap": "sm",
+                            "align": "center"
+                          },
+                          "children": [
+                            {
+                              "definition": "tile/avatar",
+                              "attributes": {
+                                "initials": "{!$attrs.contactInitials}",
+                                "alt": "{!$attrs.contactName}",
+                                "size": "xs",
+                                "shape": "circle"
+                              }
+                            },
+                            {
+                              "definition": "tile/link",
+                              "attributes": {
+                                "text": "{!$attrs.contactName}",
+                                "href": "{!$attrs.contactUrl}",
+                                "variant": "primary"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "definition": "tile/column",
+                      "attributes": {
+                        "gap": "xs"
+                      },
+                      "children": [
+                        {
+                          "definition": "tile/text",
+                          "attributes": {
+                            "text": "Owner",
+                            "variant": "caption",
+                            "color": "muted"
+                          }
+                        },
+                        {
+                          "definition": "tile/row",
+                          "attributes": {
+                            "gap": "sm",
+                            "align": "center"
+                          },
+                          "children": [
+                            {
+                              "definition": "tile/avatar",
+                              "attributes": {
+                                "initials": "{!$attrs.ownerInitials}",
+                                "alt": "{!$attrs.ownerName}",
+                                "size": "xs",
+                                "shape": "circle"
+                              }
+                            },
+                            {
+                              "definition": "tile/text",
+                              "attributes": {
+                                "text": "{!$attrs.ownerName}",
+                                "variant": "body"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "definition": "tile/column",
+                      "attributes": {
+                        "gap": "xs"
+                      },
+                      "children": [
+                        {
+                          "definition": "tile/text",
+                          "attributes": {
+                            "text": "Origin",
+                            "variant": "caption",
+                            "color": "muted"
+                          }
+                        },
+                        {
+                          "definition": "tile/text",
+                          "attributes": {
+                            "text": "{!$attrs.origin}",
+                            "variant": "body"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "definition": "tile/column",
+                  "attributes": {
+                    "gap": "sm"
+                  },
+                  "meta": {
+                    "if": "{!$attrs.hasDetails}"
+                  },
+                  "children": [
+                    {
+                      "definition": "tile/separator"
+                    },
+                    {
+                      "definition": "tile/column",
+                      "attributes": {
+                        "gap": "xs"
+                      },
+                      "meta": {
+                        "forEach": "{!$attrs.details}",
+                        "forItem": "$row",
+                        "forIndex": "$i"
+                      },
+                      "children": [
+                        {
+                          "definition": "tile/separator",
+                          "meta": {
+                            "if": "{!AND($row.isGroupStart, $i > 0)}"
+                          }
+                        },
+                        {
+                          "definition": "tile/text",
+                          "attributes": {
+                            "text": "{!$row.groupTitle}",
+                            "variant": "h4",
+                            "weight": "semibold"
+                          },
+                          "meta": {
+                            "if": "{!$row.isGroupStart}"
+                          }
+                        },
+                        {
+                          "definition": "tile/row",
+                          "attributes": {
+                            "gap": "sm",
+                            "align": "center",
+                            "justify": "between"
+                          },
+                          "children": [
+                            {
+                              "definition": "tile/text",
+                              "attributes": {
+                                "text": "{!$row.label}",
+                                "variant": "caption",
+                                "color": "muted"
+                              }
+                            },
+                            {
+                              "definition": "tile/text",
+                              "attributes": {
+                                "text": "{!$row.valueDisplay}",
+                                "variant": "body",
+                                "weight": "semibold"
+                              }
+                            }
+                          ],
+                          "meta": {
+                            "if": "{!NOT(OR(LEN(BLANKVALUE($row.valueDisplay, '')) > 48, CONTAINS(BLANKVALUE($row.valueDisplay, ''), '<')))}"
+                          }
+                        },
+                        {
+                          "definition": "tile/column",
+                          "attributes": {
+                            "gap": "xs"
+                          },
+                          "meta": {
+                            "if": "{!OR(LEN(BLANKVALUE($row.valueDisplay, '')) > 48, CONTAINS(BLANKVALUE($row.valueDisplay, ''), '<'))}"
+                          },
+                          "children": [
+                            {
+                              "definition": "tile/text",
+                              "attributes": {
+                                "text": "{!$row.label}",
+                                "variant": "caption",
+                                "color": "muted"
+                              }
+                            },
+                            {
+                              "definition": "tile/text",
+                              "attributes": {
+                                "text": "{!$row.valueDisplay}",
+                                "variant": "body"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "definition": "tile/separator"
+                },
+                {
+                  "definition": "tile/column",
+                  "attributes": {
+                    "gap": "xs"
+                  },
+                  "children": [
+                    {
+                      "definition": "tile/text",
+                      "attributes": {
+                        "text": "Description",
+                        "variant": "h4",
+                        "weight": "semibold"
+                      }
+                    },
+                    {
+                      "definition": "tile/text",
+                      "attributes": {
+                        "text": "{!$attrs.description}",
+                        "variant": "body"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "definition": "tile/separator"
+                },
+                {
+                  "definition": "tile/column",
+                  "attributes": {
+                    "gap": "sm"
+                  },
+                  "children": [
+                    {
+                      "definition": "tile/text",
+                      "attributes": {
+                        "text": "Related Knowledge Articles",
+                        "variant": "h4",
+                        "weight": "semibold"
+                      }
+                    },
+                    {
+                      "definition": "tile/row",
+                      "attributes": {
+                        "gap": "sm",
+                        "align": "center",
+                        "justify": "between"
+                      },
+                      "meta": {
+                        "forEach": "{!$attrs.kbArticles}",
+                        "forItem": "$kb"
+                      },
+                      "children": [
+                        {
+                          "definition": "tile/row",
+                          "attributes": {
+                            "gap": "sm",
+                            "align": "center"
+                          },
+                          "children": [
+                            {
+                              "definition": "tile/icon",
+                              "attributes": {
+                                "name": "file-text",
+                                "size": "sm",
+                                "color": "primary"
+                              }
+                            },
+                            {
+                              "definition": "tile/column",
+                              "attributes": {
+                                "gap": "xs"
+                              },
+                              "children": [
+                                {
+                                  "definition": "tile/text",
+                                  "attributes": {
+                                    "text": "{!$kb.title}",
+                                    "variant": "body",
+                                    "weight": "semibold"
+                                  }
+                                },
+                                {
+                                  "definition": "tile/text",
+                                  "attributes": {
+                                    "text": "{!$kb.caption}",
+                                    "variant": "caption",
+                                    "color": "muted"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "definition": "tile/icon",
+                          "attributes": {
+                            "name": "chevron-right",
+                            "size": "sm",
+                            "color": "muted"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

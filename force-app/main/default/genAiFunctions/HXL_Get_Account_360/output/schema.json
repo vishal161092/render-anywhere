@@ -1,0 +1,15 @@
+{
+    "unevaluatedProperties": false,
+    "properties": {
+        "snapshot": {
+            "title": "Account 360 Snapshot",
+            "description": "Account 360 Snapshot payload rendered by the account360Agent Custom Lightning Type",
+            "lightning:type": "c__account360Agent",
+            "lightning:isPII": false,
+            "copilotAction:isDisplayable": true,
+            "copilotAction:isUsedByPlanner": true,
+            "copilotAction:useHydratedPrompt": false
+        }
+    },
+    "lightning:type": "lightning__objectType"
+}

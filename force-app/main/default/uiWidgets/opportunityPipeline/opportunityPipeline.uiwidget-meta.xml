@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UiWidgetBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Opportunity Pipeline</masterLabel>
+    <description>Open pipeline, weighted forecast, and quota attainment for the logged-in user or a named User, with a table of open opportunities.</description>
+    <widgetType>JSON</widgetType>
+</UiWidgetBundle>
